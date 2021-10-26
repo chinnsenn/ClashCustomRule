@@ -1,0 +1,3 @@
+surge_ruleset=Proxies,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/proxies.list
+surge_ruleset=DIRECT,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/direct.list
+custom_proxy_group=Dmm`select`[]JP
