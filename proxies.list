@@ -10,10 +10,10 @@ DOMAIN-SUFFIX,fig.io
 DOMAIN-SUFFIX,tiktok.page
 DOMAIN-SUFFIX,socloud.me
 DOMAIN-SUFFIX,duyaoss.com
+DOMAIN-SUFFIX,brave.com
 DOMAIN-SUFFIX,pincong.org
 DOMAIN-SUFFIX,discord.com
 DOMAIN-SUFFIX,china-cdn-net.com
-DOMAIN-SUFFIX,disneyplus.com
 DOMAIN-SUFFIX,wiktionary.org
 DOMAIN-SUFFIX,test-ipv6.com
 DOMAIN-SUFFIX,tubeninja.net
@@ -23,5 +23,6 @@ DOMAIN-SUFFIX,alive.bar
 DOMAIN-SUFFIX,haileshe.club
 DOMAIN-SUFFIX,jetbrains.com
 DOMAIN-SUFFIX,kartinfo.me
-DOMAIN-SUFFIX,notion-static.com
+DOMAIN-SUFFIX,notion-static.co
 DOMAIN-SUFFIX,nexitally.com
+DOMAIN-SUFFIX,sonatype.org
