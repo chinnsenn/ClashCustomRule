@@ -10,6 +10,8 @@
 ;增强国外GFW：支持
 
 ;设置规则标志位
+ruleset=🚀 节点选择,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/proxies.list
+ruleset=🎯 全球直连,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/direct.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
 ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
@@ -42,13 +44,11 @@ ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list
 ruleset=🎯 全球直连,[]GEOIP,CN
 ruleset=🐟 漏网之鱼,[]FINAL
-ruleset=🚀 节点选择,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/proxies.list
-ruleset=🎯 全球直连,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/direct.list
 ;设置规则标志位
 
 ;设置分组标志位
 custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`[]🔯 故障转移`[]🔮 负载均衡`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇸🇬 狮城节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
-custom_proxy_group=🚀 手动切换`select`.*
+custom_proxy_group=🚀 手动切换`select`^((?!IPV6|用户|本站|漏洞|永久虚通路).)*$
 custom_proxy_group=♻️ 自动选择`url-test`.*`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=🔯 故障转移`fallback`.*`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=🔮 负载均衡`load-balance`.*`http://www.gstatic.com/generate_204`300,,50
@@ -79,8 +79,8 @@ custom_proxy_group=🇺🇲 美国节点`url-test`(美|波特兰|达拉斯|俄�
 custom_proxy_group=🇨🇳 台湾节点`url-test`(台|新北|彰化|TW|Taiwan)`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=🇸🇬 狮城节点`url-test`(新加坡|坡|狮城|SG|Singapore)`http://www.gstatic.com/generate_204`300,,50
 custom_proxy_group=🇰🇷 韩国节点`url-test`(KR|Korea|KOR|首尔|韩|韓)`http://www.gstatic.com/generate_204`300,,50
-custom_proxy_group=🎥 奈飞节点`select`(NF|奈飞|解锁|Netflix|NETFLIX|Media)
-custom_proxy_group=🎥 迪士尼加节点`select`.*
+custom_proxy_group=🎥 奈飞节点`select`^((?!IPV6|用户|本站|漏洞|永久虚通路).)*$
+custom_proxy_group=🎥 迪士尼加节点`select`^((?!IPV6|用户|本站|漏洞|永久虚通路).)*$
 ;设置分组标志位
 
 enable_rule_generator=true
