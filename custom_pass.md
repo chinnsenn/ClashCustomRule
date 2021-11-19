@@ -1,3 +1,25 @@
+# 打造一个属于自己的clash分流配置
+
+- 仅保证支持 clash 内核软件 (clashx, openclash, clash for windows 等等...)
+- 需要使用 https://sub.v1.mk/ 订阅转换器(如果有其他支持上传自定义配置的订阅器也可以)
+
+## 太长不看
+> 如果不想了解什么规则，只想快点用上，可以按照这个步骤生成转换的订阅连接:
+
+1. 直接复制下面从`[custom]`开始到方框末尾也就是`luck`的位置
+2. 打开 https://sub.v1.mk/ 
+3. 在第一个框填入你机场的订阅连接
+4. 点击底部`[上传自定义配置]`，将第一步复制的内容粘贴进去
+5. 其他不用动，点击生成订阅链接
+6. 随后将生成的链接贴到 clash 软件
+7. 更新完订阅后，你可以在 clash 面板自由的选择 DisneyPlus 和 Netflix 需要走哪个节点。
+![](https://github.com/chinnsenn/ClashCustomRule/raw/master/%E4%B8%8A%E4%BC%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE.png)
+
+以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求添加 DisneyPlus 的分流策略，以及修改 Netflix 的节点选择方式
+
+> 想要根据自己需求配置策略组或节点分组可以继续往下拉
+
+```
 [custom]
 ;不要随意改变关键字，否则会导致出错
 ;acl4SSR规则
@@ -8,7 +30,6 @@
 ;苹果分流：支持
 ;增强中国IP段：支持
 ;增强国外GFW：支持
-```
 ;设置规则标志位
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
@@ -30,7 +51,6 @@ ruleset=🎮 游戏平台,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=📹 油管视频,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
 ruleset=🎥 奈飞视频,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list
 ruleset=🎥 迪士尼加,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/DisneyPlus.list
-ruleset=🍑 DMMCOJP,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/dmmjp.list
 ruleset=📺 巴哈姆特,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
 ruleset=📺 哔哩哔哩,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list
 ruleset=📺 哔哩哔哩,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list
@@ -55,7 +75,6 @@ custom_proxy_group=📹 油管视频`select`[]🚀 节点选择`[]♻️ 自动�
 custom_proxy_group=🎥 奈飞视频`select`[]🎥 奈飞节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🎥 迪士尼加`select`[]🎥 迪士尼加节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=📺 巴哈姆特`select`[]🇨🇳 台湾节点`[]🚀 节点选择`[]🚀 手动切换`[]DIRECT
-custom_proxy_group=🍑 DMMCOJP`select`[]🇯🇵 日本节点
 custom_proxy_group=📺 哔哩哔哩`select`[]🎯 全球直连`[]🇨🇳 台湾节点`[]🇭🇰 香港节点
 custom_proxy_group=🌍 国外媒体`select`[]🚀 节点选择`[]♻️ 自动选择`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇸🇬 狮城节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🌏 国内媒体`select`[]DIRECT`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇸🇬 狮城节点`[]🇯🇵 日本节点`[]🚀 手动切换
@@ -90,3 +109,63 @@ overwrite_original_rules=true
 
 ;luck
 ```
+
+## 进阶配置
+
+以下下规则说明均摘自 [订阅转换规则](https://github.com/tindy2013/subconverter/blob/master/README-cn.md#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
+
+### ruleset
+
+> 从本地或 url 获取规则片段
+>
+> 格式为 `Group name,[type:]URL[,interval]` 或 `Group name,[]Rule `
+>
+> 支持的type（类型）包括：surge, quanx, clash-domain, clash-ipcidr, clash-classic
+>
+> type留空时默认为surge类型的规则
+>
+> \[] 前缀后的文字将被当作规则，而不是链接或路径，主要包含 `[]GEOIP` 和 `[]MATCH`(等同于 `[]FINAL`)。
+
+    -   例如：
+
+    ```ini
+    ruleset=🍎 苹果服务,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    # 表示引用 https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list 规则
+    # 且将此规则指向 [proxy_group] 所设置 🍎 苹果服务 策略组
+    ruleset=Domestic Services,clash-domain:https://ruleset.dev/clash_domestic_services_domains,86400
+    # 表示引用clash-domain类型的 https://ruleset.dev/clash_domestic_services_domains 规则
+    # 规则更新间隔为86400秒
+    # 且将此规则指向 [proxy_group] 所设置 Domestic Services 策略组
+    ruleset=🎯 全球直连,rules/NobyDa/Surge/Download.list
+    # 表示引用本地 rules/NobyDa/Surge/Download.list 规则
+    # 且将此规则指向 [proxy_group] 所设置 🎯 全球直连 策略组
+    ruleset=🎯 全球直连,[]GEOIP,CN
+    # 表示引用 GEOIP 中关于中国的所有 IP
+    # 且将此规则指向 [proxy_group] 所设置 🎯 全球直连 策略组
+    ruleset=!!import:snippets/rulesets.txt
+    # 表示引用本地的snippets/rulesets.txt规则
+    ```
+
+### custom_proxy_group
+
+> 为 Clash 、Mellow 、Surge 以及 Surfboard 等程序创建策略组, 可用正则来筛选节点
+>
+> \[] 前缀后的文字将被当作引用策略组
+
+```ini
+custom_proxy_group=Group_Name`url-test|fallback|load-balance`Rule_1`Rule_2`...`test_url`interval[,timeout][,tolerance]
+custom_proxy_group=Group_Name`select`Rule_1`Rule_2`...
+# 格式示例
+custom_proxy_group=🍎 苹果服务`url-test`(美国|US)`http://www.gstatic.com/generate_204`300,5,100
+# 表示创建一个叫 🍎 苹果服务 的 url-test 策略组,并向其中添加名字含'美国','US'的节点，每隔300秒测试一次，测速超时为5s，切换节点的延迟容差为100ms
+custom_proxy_group=🇯🇵 日本延迟最低`url-test`(日|JP)`http://www.gstatic.com/generate_204`300,5
+# 表示创建一个叫 🇯🇵 日本延迟最低 的 url-test 策略组,并向其中添加名字含'日','JP'的节点，每隔300秒测试一次，测速超时为5s
+custom_proxy_group=负载均衡`load-balance`.*`http://www.gstatic.com/generate_204`300,,100
+# 表示创建一个叫 负载均衡 的 load-balance 策略组,并向其中添加所有的节点，每隔300秒测试一次，切换节点的延迟容差为100ms
+custom_proxy_group=🇯🇵 JP`select`沪日`日本`[]🇯🇵 日本延迟最低
+# 表示创建一个叫 🇯🇵 JP 的 select 策略组,并向其中**依次**添加名字含'沪日','日本'的节点，以及引用上述所创建的 🇯🇵 日本延迟最低 策略组
+custom_proxy_group=节点选择`select`(^(?!.*(美国|日本)).*)
+# 表示创建一个叫 节点选择 的 select 策略组,并向其中**依次**添加名字不包含'美国'或'日本'的节点
+```
+
+有了以上规则，理论上你可以自己配置所有你想要方式
