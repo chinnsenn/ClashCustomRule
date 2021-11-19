@@ -8,7 +8,7 @@
 ;苹果分流：支持
 ;增强中国IP段：支持
 ;增强国外GFW：支持
-
+```
 ;设置规则标志位
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
@@ -81,9 +81,12 @@ custom_proxy_group=🎥 奈飞节点`select`(^(?!.*(IPV6|用户|本站|漏洞|�
 custom_proxy_group=🎥 迪士尼加节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*)
 ;设置分组标志位
 
+;custom_proxy_group=🚀 手动切换`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*) 根据自己机场节点来过滤不用的节点，填入要排除的关键字，即可过滤包含关键字的节点
+
 enable_rule_generator=true
 overwrite_original_rules=true
 
 ;clash_rule_base=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GeneralClashConfig.yml
 
 ;luck
+```
