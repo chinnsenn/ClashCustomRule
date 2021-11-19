@@ -11,7 +11,7 @@
 3. 在第一个框填入你机场的订阅连接
 4. 点击底部`[上传自定义配置]`，将第一步复制的内容粘贴进去
 5. 其他不用动，点击生成订阅链接
-6. 随后将生成的链接贴到 clash 软件
+6. 随后将生成的订阅链接添加到 clash 软件的订阅配置
 7. 更新完订阅后，你可以在 clash 面板自由的选择 DisneyPlus 和 Netflix 需要走哪个节点。
 ![](https://github.com/chinnsenn/ClashCustomRule/raw/master/%E4%B8%8A%E4%BC%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE.png)
 
