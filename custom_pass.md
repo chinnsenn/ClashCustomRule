@@ -13,7 +13,12 @@
 5. 其他不用动，点击生成订阅链接
 6. 随后将生成的订阅链接添加到 clash 软件的订阅配置
 7. 更新完订阅后，你可以在 clash 面板自由的选择 DisneyPlus 和 Netflix 需要走哪个节点。
-![](https://github.com/chinnsenn/ClashCustomRule/raw/master/%E4%B8%8A%E4%BC%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE.png)
+![]()
+
+## 策略组分组效果
+![](https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/%E7%AD%96%E7%95%A5%E7%BB%842.png)
+
+可以看到有`奈飞视频`和`迪士尼加`两个分组，由于 Disney+ 目前上线区域不多，所以适用于 Netflix 节点不一定可以用在 Disney +，所以可以分别在两个分组里选择`奈飞节点`和`迪士尼加节点`，然后前往`奈飞节点`和`迪士尼加节点`分组选择节点，逐个尝试。
 
 以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求添加 DisneyPlus 的分流策略，以及修改 Netflix 的节点选择方式
 
