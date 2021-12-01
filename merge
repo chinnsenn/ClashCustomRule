@@ -82,7 +82,7 @@ custom_proxy_group=🇸🇬 狮城节点`url-test`(新加坡|坡|狮城|SG|Singa
 custom_proxy_group=🇰🇷 韩国节点`url-test`(KR|Korea|KOR|首尔|韩|韓)`http://www.gstatic.com/generate_204`7200,5,50
 custom_proxy_group=🎥 奈飞节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*)
 custom_proxy_group=🎥 迪士尼加节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*)
-custom_proxy_group=🎼 Spotify`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*)
+custom_proxy_group=🎼 Spotify节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路)).*)
 ;设置分组标志位
 
 enable_rule_generator=true
