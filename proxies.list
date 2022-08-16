@@ -48,6 +48,8 @@ DOMAIN-SUFFIX,merlinblog.xyz
 DOMAIN-SUFFIX,airbuddy.app
 DOMAIN-SUFFIX,PythonHosted.org
 DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,slack.com
+DOMAIN-SUFFIX,slack-edge.com
 DOMAIN-KEYWORD,jsdeliver
 DOMAIN-KEYWORD,moegirl
 DOMAIN-KEYWORD,twhentai
