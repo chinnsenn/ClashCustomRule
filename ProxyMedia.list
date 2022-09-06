@@ -22,9 +22,9 @@ DOMAIN-SUFFIX,channel4.com
 # Amazon
 USER-AGENT,InstantVideo.US*
 USER-AGENT,Prime%20Video*
-DOMAIN, atv-ps.amazon.com
-DOMAIN, fls-na.amazon.com
-DOMAIN-SUFFIX, media-amazon.com
+DOMAIN,atv-ps.amazon.com
+DOMAIN,fls-na.amazon.com
+DOMAIN-SUFFIX,media-amazon.com
 DOMAIN-SUFFIX,aiv-cdn.net
 DOMAIN-SUFFIX,amazonaws.co.uk
 DOMAIN-SUFFIX,amazonaws.com
@@ -112,30 +112,6 @@ DOMAIN-SUFFIX,yahoo.co.jp
 USER-AGENT,Deezer*
 DOMAIN-SUFFIX,deezer.com
 DOMAIN-SUFFIX,dzcdn.net
-
-# DisneyPlus
-USER-AGENT,Disney*
-USER-AGENT,Disney+*
-DOMAIN,cdn.registerdisney.go.com
-DOMAIN-SUFFIX,adobedtm.com
-DOMAIN-SUFFIX,bam.nr-data.net
-DOMAIN-SUFFIX,bamgrid.com
-DOMAIN-SUFFIX,braze.com
-DOMAIN-SUFFIX,cdn.optimizely.com
-DOMAIN-SUFFIX,cdn.registerdisney.go.com
-DOMAIN-SUFFIX,cws.conviva.com
-DOMAIN-SUFFIX,d9.flashtalking.com
-DOMAIN-SUFFIX,disney-plus.net
-DOMAIN-SUFFIX,disney-portal.my.onetrust.com
-DOMAIN-SUFFIX,disney.demdex.net
-DOMAIN-SUFFIX,disney.my.sentry.io
-DOMAIN-SUFFIX,disneyplus.bn5x.net
-DOMAIN-SUFFIX,disneyplus.com
-DOMAIN-SUFFIX,disneyplus.com.ssl.sc.omtrdc.net
-DOMAIN-SUFFIX,disneystreaming.com
-DOMAIN-SUFFIX,dssott.com
-DOMAIN-SUFFIX,execute-api.us-east-1.amazonaws.com
-DOMAIN-SUFFIX,js-agent.newrelic.com
 
 # EncoreTVB
 USER-AGENT,encoreTVB*
