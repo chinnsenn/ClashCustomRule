@@ -33,6 +33,8 @@ ruleset=📹 油管视频,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/mast
 ruleset=🎥 奈飞视频,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list
 ruleset=🎥 奈飞视频,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetflixIP.list
 ruleset=🎥 迪士尼加,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/DisneyPlus.list
+ruleset=🎥 亚马逊 Prime Video,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Amazon.list
+ruleset=🎥 亚马逊 Prime Video,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/AmazonIp.list
 ruleset=🎼 Spotify,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Spotify.list
 ruleset=🍑 DMMCOJP,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/dmmjp.list
 ruleset=📺 巴哈姆特,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list
@@ -57,6 +59,7 @@ custom_proxy_group=📲 电报消息`select`[]🚀 节点选择`[]♻️ 自动�
 custom_proxy_group=📹 油管视频`select`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🎥 奈飞视频`select`[]🎥 奈飞节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🎥 迪士尼加`select`[]🎥 迪士尼加节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
+custom_proxy_group=🎥 亚马逊 Prime Video`select`[]🎥 亚马逊 Prime Video 节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🎼 Spotify`select`[]🎼 Spotify节点`[]🚀 节点选择`[]♻️ 自动选择`[]🇸🇬 狮城节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇺🇲 美国节点`[]🇰🇷 韩国节点`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=📺 巴哈姆特`select`[]🇨🇳 台湾节点`[]🚀 节点选择`[]🚀 手动切换`[]DIRECT
 custom_proxy_group=🍑 DMMCOJP`select`[]🇯🇵 日本节点
@@ -83,6 +86,7 @@ custom_proxy_group=🇸🇬 狮城节点`url-test`(新加坡|坡|狮城|SG|Singa
 custom_proxy_group=🇰🇷 韩国节点`url-test`(KR|Korea|KOR|首尔|韩|韓)`http://www.gstatic.com/generate_204`7200,5,50
 custom_proxy_group=🎥 奈飞节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路|车|邀|国内免翻|邀请朋友|eevpn|域名)).*)
 custom_proxy_group=🎥 迪士尼加节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路|车|邀|国内免翻|邀请朋友|eevpn|域名)).*)
+custom_proxy_group=🎥 亚马逊 Prime Video 节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路|车|邀|国内免翻|邀请朋友|eevpn|域名)).*)
 custom_proxy_group=🎼 Spotify节点`select`(^(?!.*(IPV6|用户|本站|漏洞|永久虚通路|车|邀|国内免翻|邀请朋友|eevpn|域名)).*)
 ;设置分组标志位
 
