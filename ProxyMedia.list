@@ -19,19 +19,6 @@ USER-AGENT,All4*
 DOMAIN-SUFFIX,c4assets.com
 DOMAIN-SUFFIX,channel4.com
 
-# Amazon
-USER-AGENT,InstantVideo.US*
-USER-AGENT,Prime%20Video*
-DOMAIN,atv-ps.amazon.com
-DOMAIN,fls-na.amazon.com
-DOMAIN-SUFFIX,media-amazon.com
-DOMAIN-SUFFIX,aiv-cdn.net
-DOMAIN-SUFFIX,amazonaws.co.uk
-DOMAIN-SUFFIX,amazonaws.com
-DOMAIN-SUFFIX,amazonvideo.com
-DOMAIN-SUFFIX,llnwd.net
-DOMAIN-SUFFIX,primevideo.com
-
 # AppleNews
 USER-AGENT,AppleNews*
 USER-AGENT,com.apple.news*
