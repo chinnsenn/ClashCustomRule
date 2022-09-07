@@ -97,7 +97,7 @@ overwrite_original_rules=true
 ;luck
 ```
 
-方案一：
+### 方案一：
 
 1. 直接复制上面从`[custom]`开始到方框末尾也就是`luck`的位置
 2. 打开 https://sub.v1.mk/ 
@@ -110,8 +110,8 @@ overwrite_original_rules=true
 步骤 4 如下图位置
 ![](custom_config.png)
 
-由于一般订阅转换服务如果配置自定义的分流规则，一般只保存三个月
-方案二（推荐）：
+由于一般订阅转换服务如果配置自定义的分流规则，一般只保存三个月，所以有方案二。
+### 方案二（推荐）：
 1. 在 Github 新建一个属于自己的仓库(如: MyClashRule)(具体注册账号，新建仓库就不赘述了)
 2. 在 MyClashRule 下新建一个文件（如本仓库的[merge](merge)），不熟悉 Github 的在仓库首页找到 「Add file」 按钮，在编辑框粘贴进「方案一」步骤 1 的内容，点击下方 commit changs 按钮
 3. 完成步骤 2 后会跳转到建好的文件界面，右上角找到「Raw」点击跳转到文件下载链接，浏览器地址栏复制该链接
