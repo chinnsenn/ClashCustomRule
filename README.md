@@ -22,8 +22,10 @@
 
 以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求添加 DisneyPlus 的分流策略，以及修改 Netflix 的节点选择方式
 
+
 > 想要根据自己需求配置策略组或节点分组可以继续往下拉
 
+由于一般订阅转换服务如果配置自定义的分流规则，一般只保存三个月，可以自建一个 Github 仓，建一个文件(比如本仓库的[merge](merge)) 将以下复制进去，保存修改后，点击右上角的 「raw」跳转到文件链接，复制地址栏的链接，粘贴到订阅转换服务的「远程配置」，在下拉框选择该链接的选项，这样就分流规则托管到 github，不受三个月限制，而且之后需要修改分流规则只需要修改保存 github 上的这个文件，等待一段时间在 clash 软件刷新订阅新的规则就可以生效了
 ```
 [custom]
 ;不要随意改变关键字，否则会导致出错
