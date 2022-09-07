@@ -6,6 +6,7 @@
 ## 太长不看
 > 如果不想了解什么规则，只想快点用上，可以按照这个步骤生成转换的订阅连接:
 
+```
 [custom]
 ;不要随意改变关键字，否则会导致出错
 ;acl4SSR规则
@@ -120,7 +121,6 @@ overwrite_original_rules=true
 步骤 4 如下图位置
 ![](custom_remote_config.png)
 
-```
 ## 策略组分组效果
 ![](https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/%E7%AD%96%E7%95%A5%E7%BB%842.png)
 
