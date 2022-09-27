@@ -6,6 +6,41 @@
 ## 太长不看
 > 如果不想了解什么规则，只想快点用上，可以按照这个步骤生成转换的订阅连接:
 
+### 方案一：
+
+1. 直接复制[配置总规则](#配置总规则)从`[custom]`开始到方框末尾也就是`luck`的位置
+2. 打开 https://sub.v1.mk/ 
+3. 在第一个框填入你机场的订阅连接
+4. 点击底部`[上传自定义配置]`，将第一步复制的内容粘贴进去
+5. 其他不用动，点击生成订阅链接
+6. 随后将生成的订阅链接添加到 clash 软件的订阅配置
+7. 更新完订阅后，你可以在 clash 面板自由的选择 DisneyPlus 和 Netflix 需要走哪个节点。
+
+步骤 4 如下图位置
+![](custom_config.png)
+
+由于一般订阅转换服务如果配置自定义的分流规则，一般只保存三个月，所以有方案二。
+### 方案二（推荐）：
+1. 在 Github 新建一个属于自己的仓库(如: MyClashRule)(具体注册账号，新建仓库就不赘述了)
+2. 在 MyClashRule 下新建一个文件（如本仓库的[merge](merge)），不熟悉 Github 的在仓库首页找到 「Add file」 按钮，在编辑框粘贴进「方案一」步骤 1 的内容，点击下方 commit changs 按钮
+3. 完成步骤 2 后会跳转到建好的文件界面，右上角找到「Raw」点击跳转到文件下载链接，浏览器地址栏复制该链接
+4. 在订阅转换网站找到「远程配置」，粘贴步骤 3 复制的链接，然后在下拉框选择该链接的选项。
+
+后续步骤如方案一
+
+步骤 4 如下图位置
+![](custom_remote_config.png)
+
+## 策略组分组效果
+![](https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/%E7%AD%96%E7%95%A5%E7%BB%842.png)
+
+可以看到有`奈飞视频`和`迪士尼加`两个分组，由于 Disney+ 目前上线区域不多，所以适用于 Netflix 节点不一定可以用在 Disney +，所以可以分别在两个分组里选择`奈飞节点`和`迪士尼加节点`，然后前往`奈飞节点`和`迪士尼加节点`分组选择节点，逐个尝试。
+
+以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求添加 DisneyPlus 的分流策略，以及修改 Netflix 的节点选择方式
+
+> 想要根据自己需求配置策略组或节点分组可以继续往下拉
+
+### 配置总规则
 ```
 [custom]
 ;不要随意改变关键字，否则会导致出错
@@ -96,41 +131,6 @@ overwrite_original_rules=true
 
 ;luck
 ```
-
-### 方案一：
-
-1. 直接复制上面从`[custom]`开始到方框末尾也就是`luck`的位置
-2. 打开 https://sub.v1.mk/ 
-3. 在第一个框填入你机场的订阅连接
-4. 点击底部`[上传自定义配置]`，将第一步复制的内容粘贴进去
-5. 其他不用动，点击生成订阅链接
-6. 随后将生成的订阅链接添加到 clash 软件的订阅配置
-7. 更新完订阅后，你可以在 clash 面板自由的选择 DisneyPlus 和 Netflix 需要走哪个节点。
-
-步骤 4 如下图位置
-![](custom_config.png)
-
-由于一般订阅转换服务如果配置自定义的分流规则，一般只保存三个月，所以有方案二。
-### 方案二（推荐）：
-1. 在 Github 新建一个属于自己的仓库(如: MyClashRule)(具体注册账号，新建仓库就不赘述了)
-2. 在 MyClashRule 下新建一个文件（如本仓库的[merge](merge)），不熟悉 Github 的在仓库首页找到 「Add file」 按钮，在编辑框粘贴进「方案一」步骤 1 的内容，点击下方 commit changs 按钮
-3. 完成步骤 2 后会跳转到建好的文件界面，右上角找到「Raw」点击跳转到文件下载链接，浏览器地址栏复制该链接
-4. 在订阅转换网站找到「远程配置」，粘贴步骤 3 复制的链接，然后在下拉框选择该链接的选项。
-
-后续步骤如方案一
-
-步骤 4 如下图位置
-![](custom_remote_config.png)
-
-## 策略组分组效果
-![](https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/%E7%AD%96%E7%95%A5%E7%BB%842.png)
-
-可以看到有`奈飞视频`和`迪士尼加`两个分组，由于 Disney+ 目前上线区域不多，所以适用于 Netflix 节点不一定可以用在 Disney +，所以可以分别在两个分组里选择`奈飞节点`和`迪士尼加节点`，然后前往`奈飞节点`和`迪士尼加节点`分组选择节点，逐个尝试。
-
-以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求添加 DisneyPlus 的分流策略，以及修改 Netflix 的节点选择方式
-
-
-> 想要根据自己需求配置策略组或节点分组可以继续往下拉
 
 ## 进阶配置
 
