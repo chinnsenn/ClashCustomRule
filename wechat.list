@@ -1,6 +1,7 @@
 # 该规则集包含绝大部分微信/WeChat网络请求 (IPv4/IPv6)
 # 请注意，该规则集除 Surge 之外不应该使用 (由于双栈问题且考虑到规则数量，部分子规则写法仅与Surge兼容)
 DOMAIN-KEYWORD,101.32.104.4
+DOMAIN-KEYWORD,183.60.155.142
 DOMAIN-KEYWORD,101.226.211.
 DOMAIN-KEYWORD,101.226.222.
 DOMAIN-KEYWORD,101.226.226.
@@ -341,6 +342,8 @@ DOMAIN-SUFFIX,weixin.qq.com
 DOMAIN-SUFFIX,wx.gtimg.com
 DOMAIN-SUFFIX,wx.qq.com
 DOMAIN-SUFFIX,wxs.qq.com
+DOMAIN-SUFFIX,wx.qlogo.cn
+DOMAIN-SUFFIX,wxapp.tc.qq.com
 
 # Device positioning
 DOMAIN-SUFFIX,analytics.map.qq.com
