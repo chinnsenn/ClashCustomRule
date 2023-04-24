@@ -345,6 +345,7 @@ DOMAIN-SUFFIX,wxs.qq.com
 DOMAIN-SUFFIX,wx.qlogo.cn
 DOMAIN-SUFFIX,wxapp.tc.qq.com
 DOMAIN-SUFFIX,sgshort.wechat.com
+DOMAIN-SUFFIX,sgminorshort.wechat.com
 
 # Device positioning
 DOMAIN-SUFFIX,analytics.map.qq.com
