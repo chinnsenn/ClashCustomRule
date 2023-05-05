@@ -127,7 +127,7 @@ custom_proxy_group=🇦🇺 澳大利亚节点`select`(土澳|澳大利亚|澳)
 enable_rule_generator=true
 overwrite_original_rules=true
 
-exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|关注|25倍率)
+exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|关注|25倍率|http)
 
 rename=!!GROUP=milkcat!!^@MilkCat-
 rename=!!GROUP=eejsq!!^@Eejsq-
