@@ -105,7 +105,7 @@ custom_proxy_group=🇰🇷 韩国节点`select`(KR|Korea|KOR|首尔|韩|韓)
 custom_proxy_group=🇬🇧 英国节点`select`(UK|英|伦敦)
 custom_proxy_group=🇩🇪 德国节点`select`(DE|德)
 custom_proxy_group=🇨🇦 加拿大节点`select`(CA|Canada|加拿大|枫)
-custom_proxy_group=🇧🇷 巴西节点`select`(BA|巴西)50
+custom_proxy_group=🇧🇷 巴西节点`select`(BA|巴西)
 custom_proxy_group=🇮🇳 印度节点`select`(IN|印度)
 custom_proxy_group=🇱🇺 卢森堡节点`select`(LU|卢森堡)
 custom_proxy_group=🇳🇱 荷兰节点`select`(NL|荷兰)
@@ -130,7 +130,7 @@ custom_proxy_group=🇵🇰 巴基斯坦节点`select`(巴基斯坦|PK)
 enable_rule_generator=true
 overwrite_original_rules=true
 
-exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|关注|25倍率|http)
+exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|关注|25倍率|http|.*([2-9]\.[0-9]x))
 
 rename=!!GROUP=milkcat!!^@MilkCat-
 rename=!!GROUP=eejsq!!^@Eejsq-
