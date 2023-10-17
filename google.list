@@ -2,18 +2,18 @@
 # 注意: 不包含YouTube
 
 # Google
-- DOMAIN-SUFFIX,1e100.net,Google
-- DOMAIN-SUFFIX,g.co,Google
-- DOMAIN-SUFFIX,google.com,Google
-- DOMAIN-SUFFIX,googleapis.com,Google
-- DOMAIN-SUFFIX,gstatic.com,Google
-- DOMAIN-SUFFIX,gv2.com,Google
-- DOMAIN-SUFFIX,gv3.com,Google
-- DOMAIN-SUFFIX,android.com,Google
-- DOMAIN-SUFFIX,withgoogle.com,Google
-- DOMAIN-SUFFIX,blogger.com,Google
-- DOMAIN-SUFFIX,waze.com,Google
-- DOMAIN-SUFFIX,gmail.com,Google
-- DOMAIN-KEYWORD,google,Google
-- DOMAIN-KEYWORD,businessmessages,Google
-- DOMAIN-KEYWORD,chrome,Google
+- DOMAIN-SUFFIX,1e100.net
+- DOMAIN-SUFFIX,g.co
+- DOMAIN-SUFFIX,google.com
+- DOMAIN-SUFFIX,googleapis.com
+- DOMAIN-SUFFIX,gstatic.com
+- DOMAIN-SUFFIX,gv2.com
+- DOMAIN-SUFFIX,gv3.com
+- DOMAIN-SUFFIX,android.com
+- DOMAIN-SUFFIX,withgoogle.com
+- DOMAIN-SUFFIX,blogger.com
+- DOMAIN-SUFFIX,waze.com
+- DOMAIN-SUFFIX,gmail.com
+- DOMAIN-KEYWORD,google
+- DOMAIN-KEYWORD,businessmessages
+- DOMAIN-KEYWORD,chrome
