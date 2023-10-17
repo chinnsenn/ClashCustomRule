@@ -34,7 +34,7 @@
 ![](custom_remote_config.png)
 
 ## 策略组分组效果
-![](https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/%E7%AD%96%E7%95%A5%E7%BB%842.png)
+![](https://raw.githubusercontent.com/chinnsenn/BlogFigureBed/master/blogimg/021fade30e0d64eec424492ac4a0970f.png)
 
 可以看到有`奈飞视频`和`迪士尼加`两个分组，由于 Disney+ 目前上线区域不多，所以适用于 Netflix 节点不一定可以用在 Disney +，所以可以分别在两个分组里选择`奈飞节点`和`迪士尼加节点`，然后前往`奈飞节点`和`迪士尼加节点`分组选择节点，逐个尝试。
 
