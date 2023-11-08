@@ -148,5 +148,6 @@ rename=!!GROUP=efcloud!!^@EfCloud-
 rename=!!GROUP=Eevpn!!^@Eevpn-
 rename=!!GROUP=fscloud!!^@Fscloud-
 rename=!!GROUP=cinx!!^@cinx-
+rename=!!GROUP=云安云!!^@yay-
 
 ;luck
