@@ -3,6 +3,7 @@ DOMAIN-SUFFIX,ai.com
 DOMAIN-SUFFIX,challenges.cloudflare.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,stripecdn.com
 DOMAIN-KEYWORD,openaiapi
 DOMAIN-KEYWORD,openaipublic
 DOMAIN-KEYWORD,claude
