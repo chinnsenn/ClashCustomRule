@@ -58,6 +58,7 @@ DOMAIN-SUFFIX,bazel.build
 DOMAIN-SUFFIX,threads.net
 DOMAIN-SUFFIX,civitai.com
 DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,segment.com
 DOMAIN-SUFFIX,launchdarkly.com
 DOMAIN-KEYWORD,jsdeliver
 DOMAIN-KEYWORD,moegirl
