@@ -57,6 +57,8 @@ DOMAIN-SUFFIX,www.eton.club
 DOMAIN-SUFFIX,bazel.build
 DOMAIN-SUFFIX,threads.net
 DOMAIN-SUFFIX,civitai.com
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,launchdarkly.com
 DOMAIN-KEYWORD,jsdeliver
 DOMAIN-KEYWORD,moegirl
 DOMAIN-KEYWORD,twhentai
