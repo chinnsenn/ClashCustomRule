@@ -36,7 +36,7 @@
 ## 策略组分组效果
 ![](https://raw.githubusercontent.com/chinnsenn/BlogFigureBed/master/blogimg/021fade30e0d64eec424492ac4a0970f.png)
 
-可以看到有`奈飞视频`和`迪士尼加`两个分组，由于 Disney+ 目前上线区域不多，所以适用于 Netflix 节点不一定可以用在 Disney +，所以可以分别在两个分组里选择`奈飞节点`和`迪士尼加节点`，然后前往`奈飞节点`和`迪士尼加节点`分组选择节点，逐个尝试。
+为多个流媒体平台建了策略组，并建了不同地区的手动选择策略组(香港，台湾，日本，美国等)，当流媒体选择具体地区时，再去具体地区的策略分组选择尝试具体节点
 
 以下配置是我从 [ACL_自动测速](https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini)拷贝而来，并且根据自己需求做了大量的改动
 > 想要根据自己需求配置策略组或节点分组可以继续往下拉
