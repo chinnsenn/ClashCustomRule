@@ -1,19 +1,119 @@
 # note: Does not contain YouTube.
 # 注意: 不包含YouTube
 
-# Google
-DOMAIN-SUFFIX,1e100.net
-DOMAIN-SUFFIX,g.co
-DOMAIN-SUFFIX,google.com
-DOMAIN-SUFFIX,googleapis.com
-DOMAIN-SUFFIX,gstatic.com
-DOMAIN-SUFFIX,gv2.com
-DOMAIN-SUFFIX,gv3.com
-DOMAIN-SUFFIX,android.com
-DOMAIN-SUFFIX,withgoogle.com
-DOMAIN-SUFFIX,blogger.com
-DOMAIN-SUFFIX,waze.com
-DOMAIN-SUFFIX,gmail.com
+# >> Google
 DOMAIN-KEYWORD,google
-DOMAIN-KEYWORD,businessmessages
-DOMAIN-KEYWORD,chrome
+DOMAIN-SUFFIX,265.com
+
+# > Alphabet Websites 
+DOMAIN-SUFFIX,abc.xyz
+DOMAIN-SUFFIX,capitalg.com
+
+# > Android
+DOMAIN-SUFFIX,android.com
+DOMAIN-SUFFIX,androidify.com
+
+# > Appspot
+DOMAIN-KEYWORD,appspot
+
+# > Chrome & Chromium
+DOMAIN-SUFFIX,chrome.com
+DOMAIN-SUFFIX,chromeexperiments.com
+DOMAIN-SUFFIX,chromestatus.com
+DOMAIN-SUFFIX,chromium.org
+DOMAIN-SUFFIX,whatbrowser.org
+
+# > Google AI
+DOMAIN-SUFFIX,autodraw.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,tensorflow.org
+DOMAIN-SUFFIX,tfhub.dev
+
+# > Google APIs
+DOMAIN,translate.googleapis.com
+DOMAIN-SUFFIX,googleapis.com
+
+# > Google Blogger
+DOMAIN-KEYWORD,blogspot
+DOMAIN-SUFFIX,blogger.com
+DOMAIN-SUFFIX,googleblog.com
+
+# > Google Cloud Platform
+DOMAIN-SUFFIX,dialogflow.com
+DOMAIN-SUFFIX,gcp.gvt2.com
+
+# > Google Developer
+DOMAIN-KEYWORD,googlesource
+DOMAIN-SUFFIX,godoc.org
+DOMAIN-SUFFIX,golang.org
+DOMAIN-SUFFIX,googlemashups.com
+DOMAIN-SUFFIX,gwtproject.org
+DOMAIN-SUFFIX,itasoftware.com
+DOMAIN-SUFFIX,pkg.go.dev
+DOMAIN-SUFFIX,shattered.io
+DOMAIN-SUFFIX,waveprotocol.org
+DOMAIN-SUFFIX,webmproject.org
+DOMAIN-SUFFIX,webrtc.org
+DOMAIN-SUFFIX,withgoogle.com
+
+# > Google Education
+DOMAIN-SUFFIX,madewithcode.com
+
+# > Google Enterprise
+DOMAIN-SUFFIX,synergyse.com
+
+# > Gmail
+DOMAIN-KEYWORD,gmail
+
+# > Google Recaptcha
+DOMAIN-KEYWORD,recaptcha
+
+# > Google Static Files
+DOMAIN-KEYWORD,gstatic
+DOMAIN-SUFFIX,gmodules.com
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,gvt0.com
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN-SUFFIX,gvt3.com
+
+# > Google VR
+DOMAIN-SUFFIX,tiltbrush.com
+
+# > Material Design
+DOMAIN-SUFFIX,getmdl.io
+DOMAIN-SUFFIX,material.io
+
+# > Other
+DOMAIN-SUFFIX,blog.google,DIRECT
+DOMAIN-SUFFIX,certificate-transparency.org
+DOMAIN-SUFFIX,certificate-transparency.dev
+DOMAIN-SUFFIX,creativelab5.com
+DOMAIN-SUFFIX,debug.com
+DOMAIN-SUFFIX,gv.com
+DOMAIN-SUFFIX,polymer-project.org
+DOMAIN-SUFFIX,waymo.com
+DOMAIN-SUFFIX,widevine.com
+DOMAIN-SUFFIX,x.company
+
+# > Google IP-CIDR
+IP-CIDR,173.194.0.0/16
+IP-CIDR,74.125.0.0/16
+
+# > Google CDNs
+DOMAIN,clientservices.googleapis.com
+DOMAIN,fonts.googleapis.com
+DOMAIN,fonts.gstatic.com
+DOMAIN,ocsp.pki.goog
+DOMAIN,crl.pki.goog
+DOMAIN,redirector.c.bigcache.googleapis.com
+DOMAIN,redirector.gvt1.com
+DOMAIN,safebrowsing.googleapis.com
+DOMAIN,safebrowsing-cache.google.com
+DOMAIN-SUFFIX,dl.google.com
+DOMAIN-SUFFIX,dl.l.google.com
+DOMAIN-SUFFIX,google.cn
+DOMAIN-SUFFIX,googletraveladservices.com
+DOMAIN-SUFFIX,ssl.gstatic.com
+DOMAIN-SUFFIX,tools.google.com
+DOMAIN-SUFFIX,tools.l.google.com
+DOMAIN-SUFFIX,update.googleapis.com
