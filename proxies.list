@@ -1,4 +1,3 @@
-DOMAIN-SUFFIX,notion.so
 DOMAIN-SUFFIX,v2ex.com
 DOMAIN-SUFFIX,gitmemory.com
 DOMAIN-SUFFIX,bianyuan.xyz
@@ -22,7 +21,6 @@ DOMAIN-SUFFIX,alive.bar
 DOMAIN-SUFFIX,haileshe.club
 DOMAIN-SUFFIX,jetbrains.com
 DOMAIN-SUFFIX,kartinfo.me
-DOMAIN-SUFFIX,notion-static.co
 DOMAIN-SUFFIX,nexitally.com
 DOMAIN-SUFFIX,sonatype.org
 DOMAIN-SUFFIX,milkcat.net
@@ -100,6 +98,8 @@ DOMAIN-SUFFIX,ip138.com
 DOMAIN-SUFFIX,linkedin.com
 DOMAIN-SUFFIX,myteamspeak.com
 DOMAIN-SUFFIX,notion.so
+DOMAIN-SUFFIX,notion.site
+DOMAIN-SUFFIX,notion-static.co
 DOMAIN-SUFFIX,ping.pe
 DOMAIN-SUFFIX,reddit.com
 DOMAIN-SUFFIX,teddysun.com
