@@ -76,7 +76,7 @@ custom_proxy_group=📈 IBKR`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节
 custom_proxy_group=👛 Wallet`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`select`.*
 custom_proxy_group=🤖 DeepL`select`.*`[]DIRECT
 custom_proxy_group=🎵 TikTok`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点
-custom_proxy_group=🎥 Netflix`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`[]🇦🇺 澳大利亚节点
+custom_proxy_group=🎥 Netflix`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`[]🇳🇬 尼日利亚
 custom_proxy_group=🎥 Disney+`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点
 custom_proxy_group=📽️ PrimeVideo`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点
 custom_proxy_group=🔍 Google`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`.*
@@ -137,6 +137,7 @@ custom_proxy_group=🇵🇭 菲律宾节点`select`(菲|PH)
 custom_proxy_group=🇹🇭 泰国节点`select`(泰|TH)
 custom_proxy_group=🇵🇰 巴基斯坦节点`select`(巴基斯坦|PK)
 custom_proxy_group=🇷🇺 俄罗斯`select`(俄|俄罗斯|RUS|RF)
+custom_proxy_group=🇳🇬 尼日利亚`select`(尼日利亚|NGR)
 ;设置分组标志位
 
 enable_rule_generator=true
