@@ -1,3 +1,5 @@
-DOMIAM-SUFFIX,itunes.apple.com
+# AppleTV
+DOMAIN,np-edge.itunes.apple.com
+DOMAIN,play-edge.itunes.apple.com
+DOMAIN-SUFFIX,tv.apple.com
 DOMIAM-SUFFIX,mzstatic.com
-DOMIAM-SUFFIX,tv.apple.com
