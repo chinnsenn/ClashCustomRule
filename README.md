@@ -58,6 +58,7 @@
 ;增强国外GFW：支持
 
 ;设置规则标志位
+;有个小技巧，下列不同列表可能会有重复规则，可以将想要命中的规则尽量提前
 ruleset=🚀 节点选择,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/proxies.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/direct.list
 ruleset=🎯 全球直连,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
