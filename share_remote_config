@@ -143,7 +143,7 @@ enable_rule_generator=true
 overwrite_original_rules=true
 skip_failed_links=true
 
-exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|禁止|备用登录|计划|面板|忘记|关注|25倍率|http|增加|持续|渠道|购买|QQ|Ins|二手|.*([3-9]\.[0-9]x)|([1-9][0-9]x)|([3-9]x))
+exclude_remarks=(IPV6|重置|流量|用户|本站|漏洞|永久虚通路|车|邀|免翻|邀请|eevpn|域名|机场|刷新|到期|套餐|官网|更多|禁止|备用登录|计划|面板|忘记|超时|关注|25倍率|http|增加|持续|渠道|购买|QQ|Ins|二手|.*([3-9]\.[0-9]x)|([1-9][0-9]x)|([3-9]x))
 
 rename=!!GROUP=milkcat!!^@MilkCat-
 rename=!!GROUP=eejsq!!^@Eejsq-
