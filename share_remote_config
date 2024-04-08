@@ -75,6 +75,7 @@ custom_proxy_group=🎼 Spotify`select`[]🚀 节点选择`[]♻️ 自动选择
 custom_proxy_group=🤖 OpenAI`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`.*
 custom_proxy_group=📈 IBKR`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`select`.*
 custom_proxy_group=🤖 Anthropic`select`[]🇺🇲 美国节点`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`select`.*
+custom_proxy_group=👛 Wallet`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点`select`.*
 custom_proxy_group=🤖 DeepL`select`.*`[]DIRECT
 custom_proxy_group=🎵 TikTok`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点
 custom_proxy_group=🎥 Netflix`select`[]🇭🇰 香港节点`[]🇨🇳 台湾节点`[]🇯🇵 日本节点`[]🇸🇬 狮城节点`[]🇺🇲 美国节点
