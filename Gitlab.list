@@ -1,4 +1,4 @@
-- DOMAIN-SUFFIX,gitlab-static.net,Gitlab
-- DOMAIN-SUFFIX,gitlab.com,Gitlab
-- DOMAIN-SUFFIX,gitlab.io,Gitlab
-- DOMAIN-SUFFIX,gitlab.net,Gitlab
+- DOMAIN-SUFFIX,gitlab-static.net
+- DOMAIN-SUFFIX,gitlab.com
+- DOMAIN-SUFFIX,gitlab.io
+- DOMAIN-SUFFIX,gitlab.net

@@ -1,0 +1,11 @@
+payload:
+  - '+.openai.com'
+  - '+.ai.com'
+  - '+.challenges.cloudflare.com'
+  - '+.oaistatic.com'
+  - '+.oaiusercontent.com'
+  - '+.devv.ai'
+  - '+.phind.com'
+  - '+.albus.org'
+  - '+.segment.io'
+  - '+.segment.com'

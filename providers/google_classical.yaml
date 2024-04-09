@@ -1,0 +1,8 @@
+payload:
+  - DOMAIN-KEYWORD,google
+  - DOMAIN-KEYWORD,appspot
+  - DOMAIN-KEYWORD,blogspot
+  - DOMAIN-KEYWORD,googlesource
+  - DOMAIN-KEYWORD,gmail
+  - DOMAIN-KEYWORD,recaptcha
+  - DOMAIN-KEYWORD,gstatic
