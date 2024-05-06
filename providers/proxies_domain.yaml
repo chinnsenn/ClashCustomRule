@@ -58,7 +58,6 @@ payload:
   - '+.bazel.build'
   - '+.threads.net'
   - '+.civitai.com'
-  - '+.launchdarkly.com'
   - '+.v2rayssr.com'
   - '+.heygen.com'
   - '+.pub.dev'
