@@ -184,6 +184,7 @@ payload:
   - '+.tiktok.com'
   - '+.tiktokcdn.com'
   - '+.tiktokv.com'
+  - '+.yarnpkg.com'
   - '+.jtvnw.net'
   - '+.ttvnw.net'
   - '+.twitch.tv'
