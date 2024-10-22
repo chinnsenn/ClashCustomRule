@@ -2,7 +2,6 @@ name: Netflix评分
 desc: Netflix视频加入豆瓣、imdb评分
 
 http:
-
   mitm:
     - "ios-*.prod.ftl.netflix.com"
     - "ios.prod.ftl.netflix.com"
