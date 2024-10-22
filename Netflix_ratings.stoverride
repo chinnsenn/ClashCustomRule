@@ -1,0 +1,25 @@
+name: Netflix评分
+desc: Netflix视频加入豆瓣、imdb评分
+
+http:
+  mitm:
+    - "ios-*.prod.ftl.netflix.com"
+    - "ios.prod.ftl.netflix.com"
+  script:
+    - match: ^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D
+      name: nf
+      type: request
+      require-body: false
+      timeout: 10
+    - match: ^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D
+      name: nf
+      type: response
+      require-body: true
+      timeout: 10  
+      
+script-providers:
+  nf:
+    url: https://raw.githubusercontent.com/TPCTPCTPC/Yet-Another-Rating-Score-Script/refs/heads/master/NFR_Overall.js
+    interval: 86400
+
+    
