@@ -1,6 +1,7 @@
 ######### 锚点 start #######
 # 策略组相关
-pr: &pr {type: select, proxies: [🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, 直连]}
+pr: &pr {type: select, proxies: [🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
+df: &df{type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
 #这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
 ######### 锚点 end #######
@@ -47,7 +48,7 @@ proxy-groups:
 - {name: Wallet, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Wallet.jpg"}
 - {name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/GitHub.png"}
 - {name: ehentai, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Panda.png"}
-- {name: 哔哩哔哩, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
+- {name: 哔哩哔哩, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 哔哩东南亚, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Bahamut.png"}
 - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/YouTube.png"}
@@ -61,7 +62,7 @@ proxy-groups:
 - {name: Epic_Games, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Epic_Games.png"}
 - {name: PlayStation, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/PlayStation.png"}
 - {name: Steam国际服, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
-- {name: Steam大陆服, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
+- {name: Steam大陆服, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: 国内, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/China_Map.png"}
 - {name: 其他, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
   #分隔,下面是地区分组
