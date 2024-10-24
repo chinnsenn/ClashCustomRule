@@ -42,10 +42,9 @@ dns:
 
 proxy-groups:
 - {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
-- {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:直连)).*", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
+- {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)(^(?!.*x(?:[2-9]|[1-9][0-9]))(?=.*(?:港|香港|hongkong|hk|hong kong|台|新北|彰化|tw|taiwan|新加坡|坡|狮城|sg|singapore|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|美|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|united states|(?<![a-zA-Z])us(?![a-zA-Z])|(?<![a-zA-Z])usa(?![a-zA-Z])|(?<![a-zA-Z])usd(?![a-zA-Z])|kr|korea|kor|首尔|韩|韓)).*$)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
 - {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Google_Search.png"}
-- {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Apple.png"}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Telegram.png"}
 - {name: OpenAI, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/ChatGPT.png"}
 - {name: Anthropic, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Anthropic.png"}
@@ -53,8 +52,6 @@ proxy-groups:
 - {name: Wallet, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Wallet.jpg"}
 - {name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/GitHub.png"}
 - {name: ehentai, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Panda.png"}
-- {name: 哔哩哔哩, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
-- {name: 哔哩东南亚, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Bahamut.png"}
 - {name: YouTube, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/YouTube.png"}
 - {name: Netflix, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Netflix.png"}
@@ -68,6 +65,12 @@ proxy-groups:
 - {name: PlayStation, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/PlayStation.png"}
 - {name: Steam国际服, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: Steam大陆服, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
+- {name: Apple国际, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Apple_1.png"}
+- {name: Apple大陆, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Apple_2.png"}
+- {name: Amazon国际, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Amazon.png"}
+- {name: Amazon大陆, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Amazon_1.png"}
+- {name: 哔哩哔哩, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
+- {name: 哔哩东南亚, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 国内, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/China_Map.png"}
   #分隔,下面是地区分组
   
@@ -133,7 +136,7 @@ rules:
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
 - RULE-SET,pixiv_domain,ehentai
-- RULE-SET,geolocation-!cn,🐡漏网之鱼
+- RULE-SET,geolocation-!cn,🚀节点选择
 - RULE-SET,nintendo_domain,Nintendo
 - RULE-SET,epic_domain,Epic_Games
 - RULE-SET,playstation_domain,PlayStation
@@ -142,12 +145,18 @@ rules:
 - RULE-SET,tiktok_domain,Tiktok
 - RULE-SET,binance_domain,Binance
 - RULE-SET,deepl_domain,DeepL
-- RULE-SET,instagram_domain,🚀节点选择
+- RULE-SET,appleintl_domain,Apple国际
+- RULE-SET,applecn_domain,Apple大陆
+- RULE-SET,proxy_domain,🚀节点选择
+- RULE-SET,notion_domain,🚀节点选择
+- RULE-SET,amazoncn_domain,Amazon国际
+- RULE-SET,amazonintl_domain,Amazon大陆
 
 - RULE-SET,google_ip,Google
 - RULE-SET,netflix_ip,Netflix
 - RULE-SET,telegram_ip,Telegram
 - RULE-SET,twitter_ip,Twitter
+- RULE-SET,appleintl_ip,Apple国际
 - RULE-SET,cn_domain,国内
 - RULE-SET,cn_ip,国内
 - MATCH,🐡漏网之鱼
@@ -243,9 +252,24 @@ rule-providers:
   deepl_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/deepl.list"
-  instagram_domain:
+  appleintl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/instagram.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple.list"
+  applecn_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple%40cn.list"
+  proxy_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geosite/proxy.list"
+  notion_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/notion.list"
+  amazonintl_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon.list"
+  amazoncn_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon%40cn.list"
 
   cn_ip:
     <<: *ip
@@ -262,3 +286,6 @@ rule-providers:
   telegram_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/telegram.list"
+  appleintl_ip:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/apple.list"
