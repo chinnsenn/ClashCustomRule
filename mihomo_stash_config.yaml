@@ -1,6 +1,8 @@
 ######### 锚点 start #######
 # 策略组相关
 pr: &pr {type: select, proxies: [🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
+mr: &mr {type: select, proxies: [🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
+ai: &ai {type: select, proxies: [🇺🇲美国, 🇺🇲美国自动选择, 🇯🇵日本, 🇯🇵日本自动选择, ⛳全部节点]}
 df: &df {type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
 rr: &rr {type: select, proxies: [直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, 🇰🇷韩国, 🇬🇧英国, 🇩🇪德国, 🇨🇦加拿大, 🇧🇷巴西, 🇮🇳印度, 🇳🇱荷兰, 🇮🇹意大利, 🇨🇭瑞士, 🇫🇷法国, 🇸🇦沙特阿拉伯, 🇮🇱以色列, 🇦🇪迪拜, 🇲🇽墨西哥, 🇨🇱智利, 🇦🇷阿根廷, 🇿🇦南非, 🇸🇪瑞典, 🇹🇷土耳其, 🇦🇺澳大利亚, 🇵🇭菲律宾, 🇹🇭泰国, 🇵🇰巴基斯坦, 🇷🇺俄罗斯, 🇳🇬尼日利亚]}
 #这里是订阅更新和延迟测试相关的
@@ -40,23 +42,25 @@ dns:
 
 proxy-groups:
 - {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
+- {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:直连)).*", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
+- {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Google_Search.png"}
 - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Apple.png"}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Telegram.png"}
-- {name: OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/ChatGPT.png"}
-- {name: Anthropic, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Anthropic.png"}
-- {name: Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Twitter.png"}
+- {name: OpenAI, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/ChatGPT.png"}
+- {name: Anthropic, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Anthropic.png"}
+- {name: Twitter, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Twitter.png"}
 - {name: Wallet, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Wallet.jpg"}
 - {name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/GitHub.png"}
 - {name: ehentai, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Panda.png"}
 - {name: 哔哩哔哩, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 哔哩东南亚, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/bilibili.png"}
 - {name: 巴哈姆特, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Bahamut.png"}
-- {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/YouTube.png"}
-- {name: Netflix, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Netflix.png"}
-- {name: Spotify, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Spotify.png"}
-- {name: DisneyPlus, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Disney+.png"}
-- {name: Tiktok, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TikTok.png"}
+- {name: YouTube, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/YouTube.png"}
+- {name: Netflix, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Netflix.png"}
+- {name: Spotify, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Spotify.png"}
+- {name: DisneyPlus, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Disney+.png"}
+- {name: Tiktok, <<: *mr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TikTok.png"}
 - {name: DeepL, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/DeepL.jpg"}
 - {name: Binance, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Binance.jpg"}
 - {name: Nintendo, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Nintendo.png"}
@@ -65,7 +69,6 @@ proxy-groups:
 - {name: Steam国际服, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: Steam大陆服, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: 国内, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/China_Map.png"}
-- {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
   #分隔,下面是地区分组
   
 - {name: 🇭🇰香港, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
@@ -103,7 +106,6 @@ proxy-groups:
 - {name: 🇵🇰巴基斯坦, type: select, include-all: true, filter: "(?i)巴基斯坦|pk"}
 - {name: 🇷🇺俄罗斯, type: select, include-all: true, filter: "(?i)俄|俄罗斯|rus|rf", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/RU.png"}
 - {name: 🇳🇬尼日利亚, type: select, include-all: true, filter: "(?i)尼日利亚|ngr"}
-- {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:直连)).*", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
 - {name: ⛳全部节点, <<: *rr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Global.png"}
 
 proxies:
@@ -140,6 +142,7 @@ rules:
 - RULE-SET,tiktok_domain,Tiktok
 - RULE-SET,binance_domain,Binance
 - RULE-SET,deepl_domain,DeepL
+- RULE-SET,instagram_domain,🚀节点选择
 
 - RULE-SET,google_ip,Google
 - RULE-SET,netflix_ip,Netflix
@@ -240,6 +243,9 @@ rule-providers:
   deepl_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/deepl.list"
+  instagram_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/instagram.list"
 
   cn_ip:
     <<: *ip
