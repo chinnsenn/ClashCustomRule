@@ -65,7 +65,7 @@ proxy-groups:
 - {name: Steam国际服, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: Steam大陆服, <<: *df, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Steam.png"}
 - {name: 国内, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/China_Map.png"}
-- {name: 其他, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点, ⏫自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
+- {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
   #分隔,下面是地区分组
   
 - {name: 🇭🇰香港, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
@@ -130,8 +130,8 @@ rules:
 - RULE-SET,bilibili_domain,哔哩哔哩
 - RULE-SET,bahamut_domain,巴哈姆特
 - RULE-SET,spotify_domain,Spotify
-- RULE-SET,pixiv_domain,其他
-- RULE-SET,geolocation-!cn,其他
+- RULE-SET,pixiv_domain,ehentai
+- RULE-SET,geolocation-!cn,🐡漏网之鱼
 - RULE-SET,nintendo_domain,Nintendo
 - RULE-SET,epic_domain,Epic_Games
 - RULE-SET,playstation_domain,PlayStation
@@ -147,7 +147,7 @@ rules:
 - RULE-SET,twitter_ip,Twitter
 - RULE-SET,cn_domain,国内
 - RULE-SET,cn_ip,国内
-- MATCH,其他
+- MATCH,🐡漏网之鱼
 
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: text}
