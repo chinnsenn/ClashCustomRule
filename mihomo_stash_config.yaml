@@ -1,7 +1,8 @@
 ######### 锚点 start #######
 # 策略组相关
 pr: &pr {type: select, proxies: [🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
-df: &df{type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
+df: &df {type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
+rr: &rr {type: select, proxies: [直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, 🇰🇷韩国, 🇬🇧英国, 🇩🇪德国, 🇨🇦加拿大, 🇧🇷巴西, 🇮🇳印度, 🇳🇱荷兰, 🇮🇹意大利, 🇨🇭瑞士, 🇫🇷法国, 🇸🇦沙特阿拉伯, 🇮🇱以色列, 🇦🇪迪拜, 🇲🇽墨西哥, 🇨🇱智利, 🇦🇷阿根廷, 🇿🇦南非, 🇸🇪瑞典, 🇹🇷土耳其, 🇦🇺澳大利亚, 🇵🇭菲律宾, 🇹🇭泰国, 🇵🇰巴基斯坦, 🇷🇺俄罗斯, 🇳🇬尼日利亚]}
 #这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
 ######### 锚点 end #######
@@ -16,7 +17,7 @@ allow-lan: true
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
 external-ui: ui
-external-ui-url: "https://github.com/chinnsenn/metacubexd/archive/gh-pages.zip"
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 
 profile:
   store-selected: true
@@ -38,7 +39,7 @@ dns:
 
 
 proxy-groups:
-- {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
+- {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Google_Search.png"}
 - {name: Apple, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Apple.png"}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Telegram.png"}
@@ -72,6 +73,11 @@ proxy-groups:
 - {name: 🇯🇵日本, type: select, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
 - {name: 🇺🇲美国, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/US.png"}
 - {name: 🇸🇬新加坡, type: select, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/SG.png"}
+- {name: 🇭🇰香港自动选择,type: url-test, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
+- {name: 🧋台湾自动选择,type: url-test, include-all: true, filter: "(?i)台|tw|taiwan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TW.png"}
+- {name: 🇯🇵日本自动选择,type: url-test, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
+- {name: 🇺🇲美国自动选择,type: url-test, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/US.png"}
+- {name: 🇸🇬新加坡自动选择,type: url-test, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/SG.png"}
 - {name: 🇰🇷韩国, type: select, include-all: true, filter: "(?i)kr|korea|kor|首尔|韩|韓", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/KR.png"}
 - {name: 🇬🇧英国, type: select, include-all: true, filter: "(?i)uk|英|伦敦", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/UK.png"}
 - {name: 🇩🇪德国, type: select, include-all: true, filter: "(?i)de|德", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/DE.png"}
@@ -98,12 +104,7 @@ proxy-groups:
 - {name: 🇷🇺俄罗斯, type: select, include-all: true, filter: "(?i)俄|俄罗斯|rus|rf", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/RU.png"}
 - {name: 🇳🇬尼日利亚, type: select, include-all: true, filter: "(?i)尼日利亚|ngr"}
 - {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)^(?!.*(?:直连)).*", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
-- {name: ⛳全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Global.png"}
-- {name: 🇭🇰香港自动选择,type: url-test, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
-- {name: 🧋台湾自动选择,type: url-test, include-all: true, filter: "(?i)台|tw|taiwan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TW.png"}
-- {name: 🇯🇵日本自动选择,type: url-test, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
-- {name: 🇺🇲美国自动选择,type: url-test, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/US.png"}
-- {name: 🇸🇬新加坡自动选择,type: url-test, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/SG.png"}
+- {name: ⛳全部节点, <<: *rr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Global.png"}
 
 proxies:
 - name: "直连"
