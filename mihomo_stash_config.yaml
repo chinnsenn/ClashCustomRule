@@ -13,7 +13,7 @@ p: &p {type: http, interval: 3600, health-check: {enable: true, url: "https://ww
 proxy-providers:
   multisubs:
     <<: *p
-    url: "https://ssb.chinnsenn.com/download/collection/mihomo"
+    url: "https://ssb.chinnsenn.com/download/collection/allsubscriptions"
 ipv6: false
 mode: Rule
 allow-lan: true
@@ -297,6 +297,7 @@ rules:
 - RULE-SET,applecn_domain,Apple大陆
 - RULE-SET,proxy_domain,🚀节点选择
 - RULE-SET,notion_domain,🚀节点选择
+- RULE-SET,wikipedia_domain,🚀节点选择
 - RULE-SET,amazoncn_domain,Amazon国际
 - RULE-SET,amazonintl_domain,Amazon大陆
 - RULE-SET,ibkr_domain,IBKR
@@ -316,128 +317,131 @@ rule-anchor:
 rule-providers:
   private:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/private.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/private.list"
   cn_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/cn.list"
   biliintl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/biliintl.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/biliintl.list"
   ehentai_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/ehentai.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/ehentai.list"
   github_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/github.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/github.list"
   gitlab_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/gitlab.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/gitlab.list"
   twitter_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/twitter.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/twitter.list"
   youtube_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/youtube.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/youtube.list"
   google_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/google.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/google.list"
   telegram_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/telegram.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/telegram.list"
   netflix_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/netflix.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/netflix.list"
   bilibili_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/bilibili.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/bilibili.list"
   bahamut_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/bahamut.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/bahamut.list"
   spotify_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/spotify.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/spotify.list"
   pixiv_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/pixiv.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/pixiv.list"
   geolocation-!cn:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/geolocation-!cn.list"
   nintendo_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/nintendo.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/nintendo.list"
   epic_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/epicgames.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/epicgames.list"
   playstation_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/playstation.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/playstation.list"
   steamintl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/steam.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/steam.list"
   steamcn_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/steam%40cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/steam%40cn.list"
   tiktok_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/tiktok.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/tiktok.list"
   disneyplus_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/disney.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/disney.list"
   openai_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/openai.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/openai.list"
   anthropic_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/anthropic.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/anthropic.list"
   stripe_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/stripe.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/stripe.list"
   wise_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/wise.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/wise.list"
   binance_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/binance.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/binance.list"
   deepl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/deepl.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/deepl.list"
   appleintl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/apple.list"
   applecn_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple%40cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/apple%40cn.list"
   proxy_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geosite/proxy.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geosite/proxy.list"
   ibkr_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/ibkr.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/ibkr.list"
   notion_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/notion.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/notion.list"
   amazonintl_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/amazon.list"
   amazoncn_domain:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon%40cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/amazon%40cn.list"
+  wikipedia_domain:
+    <<: *domain
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/wikipedia.list"
 
   cn_ip:
     <<: *ip
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/cn.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/cn.list"
   google_ip:
     <<: *ip
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/google.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/google.list"
   netflix_ip:
     <<: *ip
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/netflix.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/netflix.list"
   twitter_ip:
     <<: *ip
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/twitter.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/twitter.list"
   telegram_ip:
     <<: *ip
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/telegram.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/telegram.list"
   appleintl_ip:
     <<: *domain
-    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/apple.list"
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/apple.list"
