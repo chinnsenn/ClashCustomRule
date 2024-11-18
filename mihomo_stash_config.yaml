@@ -266,6 +266,7 @@ proxies:
 
 rules:
 - GEOIP,lan,直连,no-resolve
+- RULE-SET,direct_domain,直连
 - RULE-SET,biliintl_domain,哔哩东南亚
 - RULE-SET,ehentai_domain,ehentai
 - RULE-SET,github_domain,GitHub
@@ -426,6 +427,9 @@ rule-providers:
   wikipedia_domain:
     <<: *domain
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/wikipedia.list"
+  direct_domain:
+    <<: *domain
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/direct.list"
 
   cn_ip:
     <<: *ip
