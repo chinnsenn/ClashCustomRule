@@ -5,6 +5,7 @@ mr: &mr {type: select, proxies: [🇭🇰香港自动选择, 🇭🇰香港, �
 ai: &ai {type: select, proxies: [🇺🇲美国自动选择, 🇺🇲美国, 🇯🇵日本自动选择, 🇯🇵日本, ⛳全部节点]}
 df: &df {type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
 rr: &rr {type: select, proxies: [直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, 🇰🇷韩国, 🇬🇧英国, 🇩🇪德国, 🇨🇦加拿大, 🇧🇷巴西, 🇮🇳印度, 🇳🇱荷兰, 🇮🇹意大利, 🇨🇭瑞士, 🇫🇷法国, 🇸🇦沙特阿拉伯, 🇮🇱以色列, 🇦🇪迪拜, 🇲🇽墨西哥, 🇨🇱智利, 🇦🇷阿根廷, 🇿🇦南非, 🇸🇪瑞典, 🇹🇷土耳其, 🇦🇺澳大利亚, 🇵🇭菲律宾, 🇹🇭泰国, 🇵🇰巴基斯坦, 🇷🇺俄罗斯, 🇳🇬尼日利亚]}
+rj: &rj {type: select, proxies: [拦截, 直连]}
 #这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
 ######### 锚点 end #######
@@ -191,6 +192,7 @@ proxy-groups:
 - {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
 - {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)(^(?!.*x(?:[2-9]|[1-9][0-9]))(?=.*(?:港|香港|hongkong|hk|hong kong|台|新北|彰化|tw|taiwan|新加坡|坡|狮城|sg|singapore|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|美|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|united states|(?<![a-zA-Z])us(?![a-zA-Z])|(?<![a-zA-Z])usa(?![a-zA-Z])|(?<![a-zA-Z])usd(?![a-zA-Z])|kr|korea|kor|首尔|韩|韓)).*$)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
 - {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
+- {name: 🚧广告拦截, <<: *rj}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Google_Search.png"}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Telegram.png"}
 - {name: OpenAI, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/ChatGPT.png"}
@@ -264,8 +266,14 @@ proxies:
   type: direct
   udp: true
 
+- name: "拦截"
+  type: reject
+  udp: false
+
 rules:
 - GEOIP,lan,直连,no-resolve
+- RULE-SET,cn_domain,国内
+- RULE-SET,block_domain,🚧广告拦截
 - RULE-SET,direct_domain,直连
 - RULE-SET,biliintl_domain,哔哩东南亚
 - RULE-SET,ehentai_domain,ehentai
@@ -308,8 +316,8 @@ rules:
 - RULE-SET,telegram_ip,Telegram
 - RULE-SET,twitter_ip,Twitter
 - RULE-SET,appleintl_ip,Apple国际
-- RULE-SET,cn_domain,国内
 - RULE-SET,cn_ip,国内
+- RULE-SET,block_ip,🚧广告拦截
 - MATCH,🐡漏网之鱼
 
 rule-anchor:
@@ -430,6 +438,9 @@ rule-providers:
   direct_domain:
     <<: *domain
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/direct.list"
+  block_domain:
+    <<: *domain
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geosite/ad.list"
 
   cn_ip:
     <<: *ip
@@ -449,3 +460,6 @@ rule-providers:
   appleintl_ip:
     <<: *domain
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/apple.list"
+  block_ip:
+    <<: *domain
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/ad.list"
