@@ -317,6 +317,7 @@ rules:
 - RULE-SET,twitter_ip,Twitter
 - RULE-SET,appleintl_ip,Apple国际
 - RULE-SET,cn_ip,国内
+- RULE-SET,direct_ip,国内
 - RULE-SET,block_ip,🚧广告拦截
 - MATCH,🐡漏网之鱼
 
@@ -458,8 +459,11 @@ rule-providers:
     <<: *ip
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/telegram.list"
   appleintl_ip:
-    <<: *domain
+    <<: *ip
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/apple.list"
   block_ip:
-    <<: *domain
+    <<: *ip
     url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/ad.list"
+  direct_ip:
+    <<: *ip
+    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geoip/direct.list"
