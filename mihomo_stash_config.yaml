@@ -5,7 +5,7 @@ mr: &mr {type: select, proxies: [🇭🇰香港自动选择, 🇭🇰香港, �
 ai: &ai {type: select, proxies: [🇺🇲美国自动选择, 🇺🇲美国, 🇯🇵日本自动选择, 🇯🇵日本, ⛳全部节点]}
 df: &df {type: select, proxies: [直连, 🚀节点选择, ⏫自动选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点]}
 rr: &rr {type: select, proxies: [直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, 🇰🇷韩国, 🇬🇧英国, 🇩🇪德国, 🇨🇦加拿大, 🇧🇷巴西, 🇮🇳印度, 🇳🇱荷兰, 🇮🇹意大利, 🇨🇭瑞士, 🇫🇷法国, 🇸🇦沙特阿拉伯, 🇮🇱以色列, 🇦🇪迪拜, 🇲🇽墨西哥, 🇨🇱智利, 🇦🇷阿根廷, 🇿🇦南非, 🇸🇪瑞典, 🇹🇷土耳其, 🇦🇺澳大利亚, 🇵🇭菲律宾, 🇹🇭泰国, 🇵🇰巴基斯坦, 🇷🇺俄罗斯, 🇳🇬尼日利亚]}
-rj: &rj {type: select, proxies: [拦截, 直连]}
+
 #这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
 ######### 锚点 end #######
@@ -192,7 +192,6 @@ proxy-groups:
 - {name: 🚀节点选择, type: select, proxies: [⏫自动选择, 直连, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Proxy.png"}
 - {name: ⏫自动选择, type: url-test, include-all: true, filter: "(?i)(^(?!.*x(?:[2-9]|[1-9][0-9]))(?=.*(?:港|香港|hongkong|hk|hong kong|台|新北|彰化|tw|taiwan|新加坡|坡|狮城|sg|singapore|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|美|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|united states|(?<![a-zA-Z])us(?![a-zA-Z])|(?<![a-zA-Z])usa(?![a-zA-Z])|(?<![a-zA-Z])usd(?![a-zA-Z])|kr|korea|kor|首尔|韩|韓)).*$)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Auto.png"}
 - {name: 🐡漏网之鱼, type: select, proxies: [直连, 🚀节点选择, 🇭🇰香港, 🇭🇰香港自动选择, 🧋台湾, 🧋台湾自动选择, 🇯🇵日本, 🇯🇵日本自动选择, 🇸🇬新加坡, 🇸🇬新加坡自动选择, 🇺🇲美国, 🇺🇲美国自动选择, ⛳全部节点], icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Final.png"}
-- {name: 🚧广告拦截, <<: *rj}
 - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Google_Search.png"}
 - {name: Telegram, <<: *pr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Telegram.png"}
 - {name: OpenAI, <<: *ai, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/ChatGPT.png"}
@@ -226,12 +225,12 @@ proxy-groups:
   
 - {name: 🇭🇰香港, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
 - {name: 🧋台湾, type: select, include-all: true, filter: "(?i)台|tw|taiwan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TW.png"}
-- {name: 🇯🇵日本, type: select, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
+- {name: 🇯🇵日本, type: select, include-all: true, filter: "(?i)日本|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
 - {name: 🇺🇲美国, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/US.png"}
 - {name: 🇸🇬新加坡, type: select, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/SG.png"}
 - {name: 🇭🇰香港自动选择,type: url-test, include-all: true, filter: "(?i)港|hk|hongkong|hong kong", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/HK.png"}
 - {name: 🧋台湾自动选择,type: url-test, include-all: true, filter: "(?i)台|tw|taiwan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/TW.png"}
-- {name: 🇯🇵日本自动选择,type: url-test, include-all: true, filter: "(?i)日|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
+- {name: 🇯🇵日本自动选择,type: url-test, include-all: true, filter: "(?i)日本|jp|japan", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/JP.png"}
 - {name: 🇺🇲美国自动选择,type: url-test, include-all: true, filter: "(?i)美|us|unitedstates|united states", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/US.png"}
 - {name: 🇸🇬新加坡自动选择,type: url-test, include-all: true, filter: "(?i)(新|sg|singapore)", icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/SG.png"}
 - {name: 🇰🇷韩国, type: select, include-all: true, filter: "(?i)kr|korea|kor|首尔|韩|韓", icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/KR.png"}
@@ -261,20 +260,17 @@ proxy-groups:
 - {name: 🇳🇬尼日利亚, type: select, include-all: true, filter: "(?i)尼日利亚|ngr"}
 - {name: ⛳全部节点, <<: *rr, icon: "https://raw.githubusercontent.com/chinnsenn/Qure/master/IconSet/Color/Global.png"}
 
+
 proxies:
 - name: "直连"
   type: direct
   udp: true
 
-- name: "拦截"
-  type: reject
-  udp: false
-
 rules:
 - GEOIP,lan,直连,no-resolve
 - RULE-SET,cn_domain,国内
-- RULE-SET,block_domain,🚧广告拦截
-- RULE-SET,direct_domain,直连
+- RULE-SET,block_domain,REJECT-DROP
+- RULE-SET,direct_domain,DIRECT
 - RULE-SET,biliintl_domain,哔哩东南亚
 - RULE-SET,ehentai_domain,ehentai
 - RULE-SET,github_domain,GitHub
@@ -310,6 +306,7 @@ rules:
 - RULE-SET,amazoncn_domain,Amazon国际
 - RULE-SET,amazonintl_domain,Amazon大陆
 - RULE-SET,ibkr_domain,IBKR
+- RULE-SET,discord_domain,🚀节点选择
 
 - RULE-SET,google_ip,Google
 - RULE-SET,netflix_ip,Netflix
@@ -318,7 +315,7 @@ rules:
 - RULE-SET,appleintl_ip,Apple国际
 - RULE-SET,cn_ip,国内
 - RULE-SET,direct_ip,国内
-- RULE-SET,block_ip,🚧广告拦截
+- RULE-SET,block_ip,REJECT-DROP
 - MATCH,🐡漏网之鱼
 
 rule-anchor:
@@ -327,143 +324,146 @@ rule-anchor:
 rule-providers:
   private:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/private.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/private.list"
   cn_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/cn.list"
   biliintl_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/biliintl.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/biliintl.list"
   ehentai_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/ehentai.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/ehentai.list"
   github_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/github.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/github.list"
   gitlab_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/gitlab.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/gitlab.list"
   twitter_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/twitter.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/twitter.list"
   youtube_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/youtube.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/youtube.list"
   google_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/google.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/google.list"
   telegram_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/telegram.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/telegram.list"
   netflix_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/netflix.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/netflix.list"
   bilibili_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/bilibili.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/bilibili.list"
   bahamut_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/bahamut.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/bahamut.list"
   spotify_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/spotify.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/spotify.list"
   pixiv_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/pixiv.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/pixiv.list"
   geolocation-!cn:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/geolocation-!cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"
   nintendo_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/nintendo.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/nintendo.list"
   epic_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/epicgames.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/epicgames.list"
   playstation_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/playstation.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/playstation.list"
   steamintl_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/steam.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/steam.list"
   steamcn_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/steam%40cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/steam%40cn.list"
   tiktok_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/tiktok.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/tiktok.list"
   disneyplus_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/disney.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/disney.list"
   openai_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/openai.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/openai.list"
   anthropic_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/anthropic.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/anthropic.list"
   stripe_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/stripe.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/stripe.list"
   wise_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/wise.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/wise.list"
   binance_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/binance.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/binance.list"
   deepl_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/deepl.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/deepl.list"
   appleintl_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/apple.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple.list"
   applecn_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/apple%40cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/apple%40cn.list"
   proxy_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geosite/proxy.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geosite/proxy.list"
   ibkr_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/ibkr.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/ibkr.list"
   notion_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/notion.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/notion.list"
   amazonintl_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/amazon.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon.list"
   amazoncn_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/amazon%40cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/amazon%40cn.list"
+  discord_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/discord.list"
   wikipedia_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/wikipedia.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/wikipedia.list"
   direct_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geosite/direct.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geosite/direct.list"
   block_domain:
     <<: *domain
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geosite/ad.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geosite/ad.list"
 
   cn_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/cn.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/cn.list"
   google_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/google.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/google.list"
   netflix_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/netflix.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/netflix.list"
   twitter_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/twitter.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/twitter.list"
   telegram_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/telegram.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/telegram.list"
   appleintl_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/apple.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/apple.list"
   block_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo-lite/geoip/ad.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo-lite/geoip/ad.list"
   direct_ip:
     <<: *ip
-    url: "https://gitee.com/only136250/meta-rules-dat/raw/meta/geo/geoip/direct.list"
+    url: "https://raw.githubusercontent.com/chinnsenn/meta-rules-dat/meta/geo/geoip/direct.list"
