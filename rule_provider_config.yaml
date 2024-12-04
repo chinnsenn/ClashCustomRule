@@ -71,6 +71,7 @@ ruleset=🎯 全球直连,clash-ipcidr:https://raw.githubusercontent.com/chinnse
 ruleset=🎯 全球直连,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaCompanyIp_ipcidr.yaml,no-resolve
 ruleset=🎯 全球直连,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Download_domain.yaml
 ruleset=🎯 全球直连,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/direct_domain.yaml
+ruleset=🎯 全球直连,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/direct_ipcidr.yaml
 ;ruleset=🎯 全球直连,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/LocalAreaNetwork_domain.yaml
 ;ruleset=🎯 全球直连,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/LocalAreaNetwork_ipcidr.yaml,no-resolve
 ruleset=🎯 全球直连,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/UnBan_domain.yaml
