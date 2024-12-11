@@ -1,4 +1,5 @@
 payload:
   - '+.stripe.com'
   - '+.stripecdn.com'
+  - '+.stripecdn.network'
   - '+.wise.com'
