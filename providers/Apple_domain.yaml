@@ -18,3 +18,4 @@ payload:
   - '+.itunes.com'
   - '+.me.com'
   - '+.mzstatic.com'
+  - 'gspe1-ssl.ls.apple.com'
