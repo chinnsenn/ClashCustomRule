@@ -191,6 +191,7 @@ custom_proxy_group=🇹🇭 泰国节点`select`(泰|TH)
 custom_proxy_group=🇵🇰 巴基斯坦节点`select`(巴基斯坦|PK)
 custom_proxy_group=🇷🇺 俄罗斯节点`select`(俄|俄罗斯|RUS|RF)
 custom_proxy_group=🇳🇬 尼日利亚节点`select`(尼日利亚|NGR)
+custom_proxy_group=🇪🇸 西班牙节点`select`(西班牙|ES|班)
 ;设置分组标志位
 
 enable_rule_generator=true
