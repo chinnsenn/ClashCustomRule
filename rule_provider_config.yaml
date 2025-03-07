@@ -202,24 +202,6 @@ custom_proxy_group=🇳🇬 尼日利亚节点`select`(尼日利亚|NGR)
 custom_proxy_group=🇪🇸 西班牙节点`select`(西班牙|ES|班)
 ;设置分组标志位
 
-dns:
-  enable: true
-  listen: 0.0.0.0:53
-  default-nameserver:
-    - 223.5.5.5 # 阿里公共 DNS
-    - 119.29.29.29 # 腾讯公共 DNS
-  enhanced-mode: redir-host
-  nameserver:
-    - https://dns.google/dns-query
-    - https://1.1.1.1/dns-query
-  fallback:
-    - tls://223.5.5.5:853
-    - tls://1.1.1.1:853
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    domain: "+.cn"
-
 enable_rule_generator=true
 overwrite_original_rules=true
 skip_failed_links=true
