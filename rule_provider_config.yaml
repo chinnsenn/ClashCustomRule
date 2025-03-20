@@ -48,7 +48,6 @@ ruleset=🤖 DeepL,clash-domain:https://raw.githubusercontent.com/chinnsenn/Clas
 ruleset=🐙 Github,clash-classic:https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/GitHub/GitHub_No_Resolve.yaml
 ruleset=☁️ CloudFlare,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/cloudflare_domain.yaml
 ruleset=☁️ CloudFlare,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/cloudflare_ip.yaml
-ruleset=🐙 Github,clash-classic:https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/GitHub/GitHub_No_Resolve.yaml
 ruleset=🐦 Twitter,clash-classic:https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Twitter/Twitter_No_Resolve.yaml
 ruleset=🎈 Line,clash-classic:https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Line/Line_No_Resolve.yaml
 ruleset=🎼 Spotify,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/spotify_domain.yaml
