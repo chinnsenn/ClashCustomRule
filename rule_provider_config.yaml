@@ -63,7 +63,6 @@ ruleset=🌍 国外媒体,clash-domain:https://raw.githubusercontent.com/chinnse
 ruleset=🌍 国外媒体,clash-classic:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ProxyMedia_classical.yaml
 ruleset=🚀 节点选择,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/proxies_domain.yaml
 ruleset=🚀 节点选择,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/proxies_ipcidr.yaml,no-resolve
-ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/proxies_classical.yaml
 ruleset=📰 微博,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/weibo_domain.yaml
 ruleset=💬 微信,clash-domain:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/wechat_domain.yaml
 ruleset=💬 微信,clash-ipcidr:https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/wechat_ipcidr.yaml,no-resolve
