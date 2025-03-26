@@ -11,5 +11,6 @@ payload:
   - '+.chatgpt.com'
   - '+.segment.com'
   - '+.dify.ai'
+  - '+.openrouter.ai'
   - '+.launchdarkly.com'
   - '+.coze.com'
