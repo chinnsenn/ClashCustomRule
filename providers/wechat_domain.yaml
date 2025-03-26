@@ -24,8 +24,6 @@ payload:
   - '+.wxs.qq.com'
   - '+.wx.qlogo.cn'
   - '+.wxapp.tc.qq.com'
-  - '+.sgshort.wechat.com'
-  - '+.sgminorshort.wechat.com'
   - '+.analytics.map.qq.com'
   - '+.apis.map.qq.com'
   - '+.cc.map.qq.com'
