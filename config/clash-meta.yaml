@@ -1,0 +1,1089 @@
+# [INPUT]: providers payload 与 Clash Meta 兼容代理提供者 URL
+# [OUTPUT]: 对外提供可直接导入的 Clash Meta 原生分流模板
+# [POS]: config 的原生客户端方案；通用订阅应使用 GitHub Actions 生成完整配置
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+
+proxy-providers:
+  subscription:
+    type: http
+    url: https://example.invalid/clash.yaml
+    path: ./proxy-providers/subscription.yaml
+    interval: 21600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+rule-providers:
+  Telegram_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Telegram_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Telegram_domain.yaml
+    interval: 86400
+  Telegram_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/Telegram_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Telegram_ipcidr.yaml
+    interval: 86400
+  Epic_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Epic_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Epic_domain.yaml
+    interval: 86400
+  Sony_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Sony_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Sony_domain.yaml
+    interval: 86400
+  Steam_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Steam_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Steam_domain.yaml
+    interval: 86400
+  Nintendo_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Nintendo_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Nintendo_domain.yaml
+    interval: 86400
+  Nintendo_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/Nintendo_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Nintendo_ipcidr.yaml
+    interval: 86400
+  youtube_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/youtube_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/youtube_domain.yaml
+    interval: 86400
+  google_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/google_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/google_domain.yaml
+    interval: 86400
+  google_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/google_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/google_ipcidr.yaml
+    interval: 86400
+  appletvplus_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/appletvplus_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/appletvplus_domain.yaml
+    interval: 86400
+  Netflix_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Netflix_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Netflix_domain.yaml
+    interval: 86400
+  NetflixIP_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/NetflixIP_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/NetflixIP_ipcidr.yaml
+    interval: 86400
+  Netflix_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/Netflix_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Netflix_classical.yaml
+    interval: 86400
+  DisneyPlus_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/DisneyPlus_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/DisneyPlus_domain.yaml
+    interval: 86400
+  primevideo_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/primevideo_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/primevideo_domain.yaml
+    interval: 86400
+  gitlab_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/gitlab_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/gitlab_domain.yaml
+    interval: 86400
+  openai_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/openai_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/openai_domain.yaml
+    interval: 86400
+  openai_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/openai_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/openai_classical.yaml
+    interval: 86400
+  deepseek:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/deepseek.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/deepseek.yaml
+    interval: 86400
+  ibkr:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ibkr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ibkr.yaml
+    interval: 86400
+  wallet_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/wallet_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/wallet_domain.yaml
+    interval: 86400
+  anthropic_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/anthropic_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/anthropic_domain.yaml
+    interval: 86400
+  deepl_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/deepl_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/deepl_domain.yaml
+    interval: 86400
+  github_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/github_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/github_domain.yaml
+    interval: 86400
+  cloudflare_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/cloudflare_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/cloudflare_domain.yaml
+    interval: 86400
+  twitter:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/twitter.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/twitter.yaml
+    interval: 86400
+  spotify_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/spotify_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/spotify_domain.yaml
+    interval: 86400
+  spotify_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/spotify_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/spotify_classical.yaml
+    interval: 86400
+  dmmjp_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/dmmjp_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/dmmjp_domain.yaml
+    interval: 86400
+  Bahamut_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Bahamut_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Bahamut_domain.yaml
+    interval: 86400
+  Bilibili_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Bilibili_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Bilibili_domain.yaml
+    interval: 86400
+  BilibiliHMT_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BilibiliHMT_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BilibiliHMT_domain.yaml
+    interval: 86400
+  BilibiliHMT_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/BilibiliHMT_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BilibiliHMT_ipcidr.yaml
+    interval: 86400
+  ChinaMedia_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ChinaMedia_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaMedia_domain.yaml
+    interval: 86400
+  ChinaMedia_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/ChinaMedia_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaMedia_ipcidr.yaml
+    interval: 86400
+  ProxyMedia_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ProxyMedia_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ProxyMedia_domain.yaml
+    interval: 86400
+  ProxyMedia_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/ProxyMedia_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ProxyMedia_classical.yaml
+    interval: 86400
+  proxies_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/proxies_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/proxies_domain.yaml
+    interval: 86400
+  proxies_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/proxies_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/proxies_ipcidr.yaml
+    interval: 86400
+  weibo_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/weibo_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/weibo_domain.yaml
+    interval: 86400
+  wechat_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/wechat_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/wechat_domain.yaml
+    interval: 86400
+  XiaoHongShu_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/XiaoHongShu_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/XiaoHongShu_domain.yaml
+    interval: 86400
+  ByteDance_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ByteDance_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ByteDance_domain.yaml
+    interval: 86400
+  ChinaDomain_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ChinaDomain_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaDomain_domain.yaml
+    interval: 86400
+  ChinaDomain_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/ChinaDomain_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaDomain_classical.yaml
+    interval: 86400
+  ChinaDomain_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/ChinaDomain_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaDomain_ipcidr.yaml
+    interval: 86400
+  ChinaCompanyIp_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/ChinaCompanyIp_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ChinaCompanyIp_ipcidr.yaml
+    interval: 86400
+  Download_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Download_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Download_domain.yaml
+    interval: 86400
+  direct_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/direct_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/direct_domain.yaml
+    interval: 86400
+  direct_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/direct_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/direct_ipcidr.yaml
+    interval: 86400
+  UnBan_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/UnBan_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/UnBan_domain.yaml
+    interval: 86400
+  BanAD_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BanAD_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanAD_domain.yaml
+    interval: 86400
+  BanAD_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/BanAD_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanAD_classical.yaml
+    interval: 86400
+  BanProgramAD_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BanProgramAD_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanProgramAD_domain.yaml
+    interval: 86400
+  BanProgramAD_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/BanProgramAD_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanProgramAD_ipcidr.yaml
+    interval: 86400
+  BanEasyList_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BanEasyList_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyList_domain.yaml
+    interval: 86400
+  BanEasyList_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/BanEasyList_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyList_ipcidr.yaml
+    interval: 86400
+  BanEasyListChina_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BanEasyListChina_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyListChina_domain.yaml
+    interval: 86400
+  BanEasyListChina_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/BanEasyListChina_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyListChina_ipcidr.yaml
+    interval: 86400
+  ad_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/ad_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ad_domain.yaml
+    interval: 86400
+  BanEasyPrivacy_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/BanEasyPrivacy_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyPrivacy_domain.yaml
+    interval: 86400
+  BanEasyPrivacy_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/BanEasyPrivacy_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/BanEasyPrivacy_ipcidr.yaml
+    interval: 86400
+  GoogleFCM_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/GoogleFCM_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/GoogleFCM_domain.yaml
+    interval: 86400
+  GoogleFCM_ipcidr:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    path: ./rule-providers/GoogleFCM_ipcidr.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/GoogleFCM_ipcidr.yaml
+    interval: 86400
+  GoogleCN_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/GoogleCN_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/GoogleCN_domain.yaml
+    interval: 86400
+  OneDrive_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/OneDrive_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/OneDrive_domain.yaml
+    interval: 86400
+  OneDrive_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/OneDrive_classical.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/OneDrive_classical.yaml
+    interval: 86400
+  Microsoft_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Microsoft_domain.yaml
+    url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Microsoft_domain.yaml
+    interval: 86400
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🚀 手动切换
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: ♻️ 自动选择
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🔯 故障转移
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📲 Telegram
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📹 YouTube
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🔍 Google
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🌟 Gemini
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📽️ AppleTV+
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎼 Spotify
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🤖 OpenAI
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🐋 DeepSeek
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🤖 Anthropic
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📈 IBKR
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: ₿ Binance
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 👛 Wallet
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🤖 DeepL
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: ☁️ CloudFlare
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎵 TikTok
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎥 Netflix
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎥 Disney+
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎥 PrimeVideo
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🐙 Github
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🐦 Twitter
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎈 Line
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📺 巴哈姆特
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🍑 DMMCOJP
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📺 Bilibili
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🌪 Gitlab
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇭🇰 香港节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇯🇵 日本节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇺🇲 美国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇨🇳 台湾节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇸🇬 新加坡节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇰🇷 韩国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇭🇰 香港节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇯🇵 日本节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇺🇲 美国节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇨🇳 台湾节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇸🇬 新加坡节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇰🇷 韩国节点-自动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🌍 国外媒体
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🌏 国内媒体
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📢 谷歌FCM
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: Ⓜ️ 微软云盘
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: Ⓜ️ 微软服务
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🍎 苹果服务
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎮 游戏平台
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎮 Nintendo
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 📰 微博
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 💬 微信
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🍠 小红书
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🕺 字节跳动
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🎯 全球直连
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🛑 广告拦截
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🆎 AdBlock
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🛡️ 隐私防护
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇬🇧 英国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇩🇪 德国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇨🇦 加拿大节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇧🇷 巴西节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇮🇳 印度节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇱🇺 卢森堡节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇳🇱 荷兰节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇮🇹 意大利节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇨🇭 瑞士节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇫🇷 法国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇸🇦 沙特阿拉伯节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇮🇱 以色列节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇦🇪 迪拜节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇲🇽 墨西哥节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇨🇱 智利节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇦🇷 阿根廷节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇿🇦 南非节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇸🇪 瑞典节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇹🇷 土耳其节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇦🇺 澳大利亚节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇵🇭 菲律宾节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇹🇭 泰国节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇵🇰 巴基斯坦节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇷🇺 俄罗斯节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇳🇬 尼日利亚节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+  - name: 🇪🇸 西班牙节点
+    type: select
+    use:
+      - subscription
+    proxies:
+      - DIRECT
+
+rules:
+  - RULE-SET,Telegram_domain,📲 Telegram
+  - RULE-SET,Telegram_ipcidr,📲 Telegram,no-resolve
+  - RULE-SET,Epic_domain,🎮 游戏平台
+  - RULE-SET,Sony_domain,🎮 游戏平台
+  - RULE-SET,Steam_domain,🎮 游戏平台
+  - RULE-SET,Nintendo_domain,🎮 Nintendo
+  - RULE-SET,Nintendo_ipcidr,🎮 Nintendo,no-resolve
+  - RULE-SET,youtube_domain,📹 YouTube
+  - RULE-SET,google_domain,🔍 Google
+  - RULE-SET,google_ipcidr,🔍 Google,no-resolve
+  - RULE-SET,appletvplus_domain,📽️ AppleTV+
+  - RULE-SET,Netflix_domain,🎥 Netflix
+  - RULE-SET,NetflixIP_ipcidr,🎥 Netflix,no-resolve
+  - RULE-SET,Netflix_classical,🎥 Netflix
+  - RULE-SET,DisneyPlus_domain,🎥 Disney+
+  - RULE-SET,primevideo_domain,🎥 PrimeVideo
+  - RULE-SET,gitlab_domain,🌪 Gitlab
+  - RULE-SET,openai_domain,🤖 OpenAI
+  - RULE-SET,openai_classical,🤖 OpenAI
+  - RULE-SET,deepseek,🐋 DeepSeek
+  - RULE-SET,ibkr,📈 IBKR
+  - RULE-SET,wallet_domain,👛 Wallet
+  - RULE-SET,anthropic_domain,🤖 Anthropic
+  - RULE-SET,deepl_domain,🤖 DeepL
+  - RULE-SET,github_domain,🐙 Github
+  - RULE-SET,cloudflare_domain,☁️ CloudFlare
+  - RULE-SET,twitter,🐦 Twitter
+  - RULE-SET,spotify_domain,🎼 Spotify
+  - RULE-SET,spotify_classical,🎼 Spotify
+  - RULE-SET,dmmjp_domain,🍑 DMMCOJP
+  - RULE-SET,Bahamut_domain,📺 巴哈姆特
+  - RULE-SET,Bilibili_domain,📺 Bilibili
+  - RULE-SET,BilibiliHMT_domain,📺 Bilibili
+  - RULE-SET,BilibiliHMT_ipcidr,📺 Bilibili,no-resolve
+  - RULE-SET,ChinaMedia_domain,🌏 国内媒体
+  - RULE-SET,ChinaMedia_ipcidr,🌏 国内媒体,no-resolve
+  - RULE-SET,ProxyMedia_domain,🌍 国外媒体
+  - RULE-SET,ProxyMedia_classical,🌍 国外媒体
+  - RULE-SET,proxies_domain,🚀 节点选择
+  - RULE-SET,proxies_ipcidr,🚀 节点选择,no-resolve
+  - RULE-SET,weibo_domain,📰 微博
+  - RULE-SET,wechat_domain,💬 微信
+  - RULE-SET,XiaoHongShu_domain,🍠 小红书
+  - RULE-SET,ByteDance_domain,🕺 字节跳动
+  - RULE-SET,ChinaDomain_domain,🎯 全球直连
+  - RULE-SET,ChinaDomain_classical,🎯 全球直连
+  - RULE-SET,ChinaDomain_ipcidr,🎯 全球直连,no-resolve
+  - RULE-SET,ChinaCompanyIp_ipcidr,🎯 全球直连,no-resolve
+  - RULE-SET,Download_domain,🎯 全球直连
+  - RULE-SET,direct_domain,🎯 全球直连
+  - RULE-SET,direct_ipcidr,🎯 全球直连,no-resolve
+  - RULE-SET,UnBan_domain,🎯 全球直连
+  - RULE-SET,BanAD_domain,🛑 广告拦截
+  - RULE-SET,BanAD_classical,🛑 广告拦截
+  - RULE-SET,BanProgramAD_domain,🍃 应用净化
+  - RULE-SET,BanProgramAD_ipcidr,🍃 应用净化,no-resolve
+  - RULE-SET,BanEasyList_domain,🆎 AdBlock
+  - RULE-SET,BanEasyList_ipcidr,🆎 AdBlock,no-resolve
+  - RULE-SET,BanEasyListChina_domain,🆎 AdBlock
+  - RULE-SET,BanEasyListChina_ipcidr,🆎 AdBlock,no-resolve
+  - RULE-SET,ad_domain,🆎 AdBlock
+  - RULE-SET,BanEasyPrivacy_domain,🛡️ 隐私防护
+  - RULE-SET,BanEasyPrivacy_ipcidr,🛡️ 隐私防护,no-resolve
+  - RULE-SET,GoogleFCM_domain,📢 谷歌FCM
+  - RULE-SET,GoogleFCM_ipcidr,📢 谷歌FCM,no-resolve
+  - RULE-SET,GoogleCN_domain,🎯 全球直连
+  - RULE-SET,OneDrive_domain,Ⓜ️ 微软云盘
+  - RULE-SET,OneDrive_classical,Ⓜ️ 微软云盘
+  - RULE-SET,Microsoft_domain,Ⓜ️ 微软服务
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼

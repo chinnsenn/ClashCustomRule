@@ -1,8 +1,0 @@
-# Telegram
-#PROCESS-NAME,Telegram.exe
-#PROCESS-NAME,org.telegram.messenger
-IP-CIDR,1.0.0.0/32,no-resolve
-IP-CIDR,160.37.145.170/32,no-resolve
-IP-CIDR,144.165.113.109/2,no-resolve
-IP-CIDR,112.101.239.111/32,no-resolve
-IP-CIDR,5.28.195.163/18,no-resolve

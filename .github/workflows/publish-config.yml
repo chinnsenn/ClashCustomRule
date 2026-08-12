@@ -1,0 +1,42 @@
+# [INPUT]: GitHub Secrets 中的订阅与 Gist 凭据，仓库 config 与 scripts
+# [OUTPUT]: 更新私有 Gist 中的 Clash Meta 配置
+# [POS]: 无服务器发布入口，定时刷新订阅节点并保留最后可用配置
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
+name: Publish Clash Meta config
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-clash-meta-config
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install YAML validator
+        shell: bash
+        run: python3 -m pip install --disable-pip-version-check --quiet PyYAML==6.0.3
+
+      - name: Validate repository configuration
+        shell: bash
+        run: ./scripts/validate-config.sh
+
+      - name: Publish validated configuration
+        shell: bash
+        env:
+          SUBSCRIPTION_URLS: ${{ secrets.SUBSCRIPTION_URLS }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          GIST_FILENAME: ${{ vars.GIST_FILENAME || 'clash-meta.yaml' }}
+          SUBCONVERTER_IMAGE: ghcr.io/metacubex/subconverter@sha256:cbc85945f24a415e7a3512b0b1fd54019fb98af43c91a36b35ea32b61a63b373
+        run: ./scripts/publish-config.sh
