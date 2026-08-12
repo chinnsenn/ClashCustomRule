@@ -1,126 +1,156 @@
 # ClashCustomRule
 
-Clash Meta/Mihomo 的分流规则库与无服务器多机场订阅发布方案。
+面向 Clash Meta / Mihomo 的分流规则库，以及无需自建服务器的多订阅发布方案。
 
-> **建议 Fork 本仓库。** 个人 Fork 是规则、策略组、订阅 Secrets 与发布 Gist 的维护边界；上游仓库提供可更新的规则基线。
+它会把多个订阅链接转换为一份可直接导入客户端的 Clash Meta 配置，并按服务、地区和广告拦截规则生成策略组。规则、订阅凭据与发布地址均由你的个人 Fork 管理。
 
-## 选择方案
+> 建议先 [Fork 本仓库](https://github.com/chinnsenn/ClashCustomRule/fork)。上游仓库提供规则基线；个人 Fork 才是你配置订阅、修改规则和保存发布地址的地方。
 
-| 订阅类型 | 推荐路径 | 结果 |
+## 从这里开始
+
+| 你的订阅情况 | 该用什么 | 最终得到什么 |
 | --- | --- | --- |
-| 已输出 Clash YAML 的订阅 | [Clash Meta 原生模板](#clash-meta-原生模板) | 客户端直接拉取代理与规则提供者 |
-| Base64、混合协议、机场私有格式、多机场链接 | [GitHub Actions + 私有 Gist](#免自建方案github-actions--私有-gist) | 定时聚合、过滤、重命名、分流并发布最终 Clash 配置 |
-| 需要可视化编排、即时更新和自定义服务域名 | [自建进阶](#自建进阶) | sub-store + subconverter + 受控发布地址 |
+| 订阅地址已经返回 Clash YAML | [原生模板](#使用原生模板) | 客户端直接拉取代理和规则 |
+| Base64、混合协议、机场私有格式，或多个订阅链接 | [自动发布（推荐）](#自动发布推荐) | 每 6 小时更新的一份完整 Clash Meta 配置 |
+| 需要网页管理、即时更新或自定义域名 | [自建部署](#自建部署) | 自己托管的订阅转换与发布服务 |
 
-本仓库输出 Clash Meta 兼容 YAML。`config/subconverter.ini` 是 subconverter 的 INI 输入文件，不能直接导入客户端。
+`config/subconverter.ini` 是转换器的输入文件，**不能**直接导入 Clash Meta / Mihomo 客户端。
 
-## 免自建方案：GitHub Actions + 私有 Gist
+## 自动发布（推荐）
 
-GitHub 托管定时任务。每 6 小时自动拉取所有订阅链接、更新节点、应用本仓库分流规则、验证输出，并在内容变化时更新私有 Gist。
+GitHub Actions 会每 6 小时拉取全部订阅、过滤和重命名节点、应用规则、校验结果，再把有变化的配置写入一个私有 Gist。你只需把这个 Gist 的 Raw 文件地址添加到客户端一次。
 
 ```text
-SUBSCRIPTION_URLS Secret
-  → GitHub Actions 临时 Runner
-  → metacubex/subconverter
-  → config/subconverter.ini
-  → YAML 校验与变更检测
-  → 私有 Gist Raw URL
-  → Clash Meta 客户端
+订阅链接
+  → GitHub Actions
+  → subconverter
+  → 分流规则与策略组
+  → YAML 校验
+  → 私有 Gist
+  → Clash Meta / Mihomo 客户端
 ```
 
-### 配置步骤
+### 第一次配置
 
-1. Fork 本仓库。
-2. 在 GitHub 创建一个专用 Gist，并新建文件 `clash-meta.yaml`。Gist 文件包含节点凭据，按敏感数据管理。
-3. 打开 Fork 仓库的 **Settings → Secrets and variables → Actions**，添加以下 Secrets：
+1. [Fork 本仓库](https://github.com/chinnsenn/ClashCustomRule/fork)。如果 Actions 尚未启用，进入**你自己的 Fork 仓库**的 **Actions** 页面，并按提示启用工作流。
+2. [创建一个私有 Gist](https://gist.github.com/)，新建文件并命名为 `clash-meta.yaml`。该文件会保存完整节点配置，请不要在公共位置分享。
+3. 创建一个可编辑此 Gist 的 GitHub 访问令牌。使用经典个人访问令牌时，只需授予 `gist` 权限；可在 [个人访问令牌页面](https://github.com/settings/tokens) 创建。
+4. 在你的 Fork 中打开 **Settings → Secrets and variables → Actions**，创建以下三个 Actions secrets：
 
-   | Secret | 内容 |
+   | 名称 | 填写内容 |
    | --- | --- |
-   | `SUBSCRIPTION_URLS` | 每行一个机场订阅链接；`#` 开头的行作为注释 |
-   | `GIST_ID` | 专用 Gist 的 ID |
-   | `GIST_TOKEN` | 可编辑该 Gist 的最小权限 GitHub token |
+   | `SUBSCRIPTION_URLS` | 每行一个订阅链接；空行和以 `#` 开头的行会忽略 |
+   | `GIST_ID` | 第 2 步创建的 Gist ID |
+   | `GIST_TOKEN` | 第 3 步创建的访问令牌 |
 
-4. 可选：在 **Variables** 添加 `GIST_FILENAME`，默认值为 `clash-meta.yaml`。
-5. 打开 **Actions → Publish Clash Meta config → Run workflow**，首次手动运行。
-6. 成功后复制 Gist 文件的 Raw URL，添加到 Clash Meta/Mihomo 客户端作为订阅地址。
+5. 可选：在同一页面的 **Variables** 新建 `GIST_FILENAME`，以修改 Gist 内文件名；默认是 `clash-meta.yaml`。
+6. 打开 **Actions → Publish Clash Meta config → Run workflow**，手动运行一次。
+7. 运行成功后，在 Gist 中复制 `clash-meta.yaml` 的 **Raw** 地址，并将其作为订阅地址添加到 Clash Meta / Mihomo 客户端。
 
-工作流使用 `workflow_dispatch` 和 `17 */6 * * *` 定时触发。它采用并发取消策略，较新的运行取代尚未完成的旧运行。
+### 更新与失败处理
 
-### 节点更新行为
+- 工作流按 `17 */6 * * *` 触发，也可以随时手动运行；新任务会取消尚未完成的旧任务。
+- 每次都会重新读取所有订阅链接，检查最终 YAML 中的 `proxies`、`proxy-groups` 和 `rules`。
+- 内容没有变化时不会写入 Gist；拉取、转换、校验或发布失败时，Gist 会保留上一份可用配置。
 
-每次运行都会重新拉取 `SUBSCRIPTION_URLS` 中的全部链接。转换后脚本验证 YAML 必备的 `proxies`、`proxy-groups` 和 `rules`；Gist 内容一致时跳过写入，内容变化时更新节点和配置。拉取、转换、验证或 Gist API 请求失败时，已有 Gist 保持最后可用版本。
+## 使用原生模板
 
-### 安全边界
+如果你的订阅本身就是 Clash YAML，可使用 [原生模板](config/clash-meta.yaml)。它内置规则提供者、策略组和规则顺序，但不会转换通用或 Base64 订阅。
 
-- 订阅链接只存在于 GitHub Actions Secrets 和临时 Runner 环境。
-- 工作流关闭 shell trace，掩盖每条订阅链接与 Gist token，且不上传包含节点配置的 artifact。
-- Gist Raw URL 可访问完整节点凭据。将它保存在受控客户端中；泄露后轮换机场订阅、创建新 Gist、撤销旧 token。
-- Gist 采用持有链接的访问模型。私有 Gist 适用于低暴露托管，敏感环境应使用自建受认证发布地址。
+1. 下载或复制 [模板文件](config/clash-meta.yaml)。
+2. 将 `proxy-providers.subscription.url` 改为你的 Clash YAML 订阅地址。
+3. 将模板内的 `chinnsenn/ClashCustomRule/master` 替换为你的 GitHub 用户名、Fork 仓库名和分支名。
+4. 导入客户端；规则 payload 会从你的 Fork 更新，因此后续添加的个人规则会生效。
 
-## Clash Meta 原生模板
+通用/Base64 订阅、多机场聚合和节点重命名请使用上面的自动发布方案。
 
-`config/clash-meta.yaml` 复用 `providers/` 中的规则 payload，声明 rule-provider、策略组和规则顺序。将 `chinnsenn/ClashCustomRule/master` 替换为个人 Fork 的 GitHub 用户名、仓库名与分支名；再把 `proxy-providers.subscription.url` 填为**已经返回 Clash YAML** 的代理提供者地址。
+## 规则与策略组
 
-通用/Base64 订阅需要转换，使用 GitHub Actions 方案。规则 payload 通过当前 Fork 的 Raw GitHub 地址加载，因此个人新增规则会随 Fork 生效。
+默认配置涵盖以下方向：
 
-## 外部规则源
+- 常用服务：Telegram、YouTube、Google、Gemini、OpenAI、Anthropic、DeepSeek、GitHub、Cloudflare、TikTok、X、Spotify 等。
+- 流媒体与游戏：Netflix、Disney+、Prime Video、Apple TV+、Bilibili、巴哈姆特、Steam、Epic、Nintendo 等。
+- 网络与隐私：国内/国外媒体、直连、广告拦截、应用净化、AdBlock 与隐私防护。
+- 节点选择：全局手动选择、自动测速、故障转移，以及港、台、日、新、美、韩等地区自动组。
 
-本仓库的核心职责是组合、排序、策略组与自动发布。分流数据优先引用长期维护的公开规则库，个人 Fork 只保留自己的补充规则。
+规则会按配置中的顺序匹配；更具体的服务规则位于通用规则之前。生成后的配置可在客户端中按策略组选择节点或 `DIRECT`。
 
-| 规则库 | 适用范围 | 主要格式 | 集成位置 |
-| --- | --- | --- | --- |
-| [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo 基础大类、GeoSite、GeoIP | `.mrs`、`geo` | Clash Meta 原生模板使用 `format: mrs` |
-| [ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) | 成熟的 Clash 基础分流补充 | Clash `.list`、YAML | `subconverter.ini` 使用对应输入类型 |
-| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | 流媒体、AI、金融、社交等服务级分流 | Clash YAML、Surge、Quantumult X | `subconverter.ini` 使用 `clash-domain:`、`clash-ipcidr:`、`clash-classic:` |
-| [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) | 直连、代理、拒绝、私有网络等基础类别 | Clash 文本规则 | 用于基础 `direct`、`proxy`、`reject`、`private` 分类 |
+## 自定义
 
-格式边界：Clash Meta 原生 `rule-providers` 接收 Clash provider YAML 或 MetaCubeX `.mrs`；Surge 与 Quantumult X 规则通过 subconverter 作为输入转换。不要把 Surge、Quantumult X 文本直接填入 Clash Meta 的 `rule-providers`。
+| 想调整什么 | 修改位置 | 说明 |
+| --- | --- | --- |
+| 新增少量个人域名、IP 或经典规则 | [providers/](providers/) | 每个文件只保留 YAML 的 `payload:` 列表 |
+| 服务分流、策略组、节点过滤和名称重命名 | [config/subconverter.ini](config/subconverter.ini) | 自动发布方案的唯一规范配置 |
+| 原生模板的 rule-provider、策略组与规则顺序 | [config/clash-meta.yaml](config/clash-meta.yaml) | 仅影响原生模板方案 |
 
-推荐组合：MetaCubeX 提供原生基础规则，blackmatrix7 提供服务级分流，ACL4SSR 与 Loyalsoldier 提供转换器兼容和基础补充。
+### 重命名节点
 
-## 维护自己的规则
+在 [subconverter 配置](config/subconverter.ini) 末尾找到注释掉的 `rename=` 示例，取消注释后：
 
-- 在 `providers/` 新增或编辑少量个人补充规则。每个文件只保留 YAML `payload:` 列表。
-- 在 `config/subconverter.ini` 调整 `ruleset=`、`custom_proxy_group=`、节点过滤和重命名；底部的 `rename=` 示例支持按订阅名称关键字统一节点前缀。取消注释后，将 `机场A` 改为订阅名称中的识别关键字，将 `机场 A` 改为希望展示的名称。`rule_provider_config.yaml` 是兼容旧 Raw 链接的镜像副本，变更后同步更新。
-- 在 `config/clash-meta.yaml` 调整原生模板中的 rule-provider、策略组与规则顺序。
-- 提交前运行：
+1. 把 `机场A` 改为订阅名称中可识别的关键字。
+2. 把 `机场 A` 改为想在客户端显示的名称。
+3. 再次运行工作流，新的节点名会随 Gist 配置发布。
+
+`rule_provider_config.yaml` 是旧 Raw 地址的兼容副本；如仍在使用该旧入口，修改后请同步更新它。
+
+### 提交前校验
+
+修改 `providers/`、策略组或原生模板后，在仓库根目录运行：
 
 ```bash
 ./scripts/validate-config.sh
 ```
 
-它检查 provider YAML、subconverter 规则引用、策略组引用和原生模板结构。
+它会检查 provider YAML、subconverter 规则引用、策略组引用和原生模板结构。
 
-## 文件结构
+## 外部规则来源
+
+本仓库负责组合、排序、策略组与自动发布；服务级分流主要来自长期维护的公开规则库，个人 Fork 适合保存自己的补充规则。
+
+| 规则库 | 用途 | 本项目中的用法 |
+| --- | --- | --- |
+| [MetaCubeX meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) | Mihomo 基础分类、GeoSite、GeoIP | 原生模板可使用 `.mrs` 格式 |
+| [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) | Clash 基础分流补充 | 适合作为 subconverter 输入 |
+| [blackmatrix7 ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | 流媒体、AI、金融、社交等服务级分流 | 通过 subconverter 转换为 Clash 规则 |
+| [Loyalsoldier clash-rules](https://github.com/Loyalsoldier/clash-rules) | 直连、代理、拒绝、私有网络等基础类别 | 用于基础分类补充 |
+
+Clash Meta 原生 `rule-providers` 只能接收 Clash provider YAML 或 MetaCubeX `.mrs`。Surge 和 Quantumult X 规则应交给 subconverter 转换，不要直接填入原生模板。
+
+## 安全说明
+
+- 订阅链接仅保存在 GitHub Actions secrets 和临时运行环境中；工作流不会上传含节点配置的 artifact。
+- Gist Raw 地址可读取完整节点凭据。请只将它保存在受控客户端中，不要公开发布或截图分享。
+- 地址或令牌泄露后，应更换机场订阅、创建新的私有 Gist，并撤销旧令牌。
+- 私有 Gist 依赖“持有链接即可访问”的模式，适合低暴露场景；需要更严格访问控制时请使用自建、带认证的 HTTPS 地址。
+
+## 自建部署
+
+当你需要可视化管理订阅、即时生效或受认证的发布地址时，可以部署以下单向流程：
 
 ```text
-providers/                   规则 payload 数据源
-config/subconverter.ini      subconverter 规则、策略组、过滤和重命名
-config/clash-meta.yaml       Clash Meta 原生模板
-scripts/publish-config.sh    聚合、转换、校验和 Gist 发布
-scripts/validate-config.sh   离线配置一致性校验
-.github/workflows/           定时订阅刷新工作流
-```
-
-## 自建进阶
-
-需要可视化订阅管理或受认证发布地址时，部署以下单向数据流：
-
-```text
-sub-store 前端/后端（订阅录入、过滤、重命名）
-  → subconverter（规则应用与目标格式转换）
+sub-store（订阅录入、过滤、重命名）
+  → subconverter（规则应用与格式转换）
   → 私有 Gist 或受认证 HTTPS 地址
-  → Clash Meta 客户端
+  → Clash Meta / Mihomo 客户端
 ```
 
-subconverter 使用 `metacubex/subconverter`，服务端口为 `25500`。将它置于反向代理后的内网服务，入口提供 HTTPS 与身份认证；保存订阅和令牌的环境变量；备份配置与数据；日志只保留脱敏的运行状态。当前本机 Docker 环境未部署 sub-store 或 subconverter，`sub2api` 属于独立服务。
+subconverter 默认服务端口为 `25500`。建议将服务放在反向代理后的内网环境，入口启用 HTTPS 和身份认证；订阅与令牌使用环境变量保存，备份配置和数据，日志仅保留脱敏状态。
 
-## 从旧方案迁移
+## 迁移旧方案
 
-旧公共转换站会接收订阅链接。迁移流程：Fork → 配置 Secrets 和私有 Gist → 手动运行 Actions → 在客户端导入 Gist Raw URL → 确认策略组与节点更新正常 → 从旧公共服务撤销订阅记录。
+如果曾使用公共转换站，建议按以下顺序迁移：Fork 本仓库 → 配置 Actions secrets 与私有 Gist → 手动运行工作流 → 在客户端导入 Gist Raw 地址 → 确认节点和策略组正常更新 → 从旧服务撤销订阅记录。
 
-`rule_provider_config.yaml` 延续旧路径兼容性；新的自动化与维护入口使用 `config/subconverter.ini`。
+## 项目结构
+
+```text
+providers/                   个人规则 payload 数据源
+config/subconverter.ini      转换规则、策略组、过滤与重命名
+config/clash-meta.yaml       可直接导入的原生 Clash Meta 模板
+scripts/publish-config.sh    聚合订阅、转换、校验并发布到 Gist
+scripts/validate-config.sh   离线配置一致性校验
+.github/workflows/           定时与手动发布工作流
+```
 
 ## 变更记录
 
-- 2026-08：移除旧网页转换、旧规则文件和 Surge/Stash 附加模块；建立 Clash Meta + GitHub Actions + 私有 Gist 工作流。
+- 2026-08：移除旧网页转换、旧规则文件和 Surge/Stash 附加模块，改为 Clash Meta + GitHub Actions + 私有 Gist 工作流。
