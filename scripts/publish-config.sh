@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # [INPUT]: GitHub Actions Secrets、config/subconverter.ini、Docker 与 GitHub Gist API
 # [OUTPUT]: 对外更新指定私有 Gist 的完整 Clash Meta 配置
-# [POS]: scripts 的容错发布编排器，跳过失效订阅并保护最后可用的 Gist
+# [POS]: scripts 的容错发布编排器，先下载再本地转换，跳过失效订阅并保护最后可用的 Gist
 # [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 set -euo pipefail
 set +x
@@ -35,6 +35,27 @@ show_converter_diagnostics() {
   docker logs "$container" 2>&1 | tail -n 30 | redact >&2 || true
 }
 
+show_download_diagnostics() {
+  local errors="$1"
+  if [ -s "$errors" ]; then
+    printf '%s' '订阅下载诊断（已脱敏）：' >&2
+    head -c 2048 "$errors" | tr '\n' ' ' | redact >&2
+    printf '\n' >&2
+  fi
+}
+
+download_subscription() {
+  local source="$1" output="$2" errors="$3"
+  curl --silent --show-error --location --fail \
+    --connect-timeout 10 \
+    --max-time 60 \
+    --retry 2 \
+    --retry-delay 1 \
+    --output "$output" \
+    --write-out '%{http_code}' \
+    "$source" 2>"$errors" || true
+}
+
 request_converter() {
   local output="$1"
   shift
@@ -54,6 +75,34 @@ printf '::add-mask::%s\n' "$GIST_TOKEN"
 
 mapfile -t subscriptions < <(printf '%s\n' "$SUBSCRIPTION_URLS" | grep -Ev '^\s*(#|$)' || true)
 [ "${#subscriptions[@]}" -gt 0 ] || { printf '%s\n' '没有有效订阅地址' >&2; exit 1; }
+
+mkdir -p "$workspace/subscriptions"
+downloaded_subscriptions=()
+downloaded_source_indexes=()
+successful_downloads=0
+failed_downloads=0
+for index in "${!subscriptions[@]}"; do
+  output="$workspace/subscriptions/$index"
+  errors="$workspace/download-$index.err"
+  status="$(download_subscription "${subscriptions[$index]}" "$output" "$errors")"
+  if [[ "$status" == 2?? ]] && [ -s "$output" ]; then
+    successful_downloads=$((successful_downloads + 1))
+    downloaded_subscriptions+=("/base/config/subscriptions/$index")
+    downloaded_source_indexes+=("$index")
+  else
+    failed_downloads=$((failed_downloads + 1))
+    printf '%s\n' "订阅 $((index + 1)) 下载失败（HTTP ${status:-000}）" >&2
+    show_download_diagnostics "$errors"
+  fi
+done
+printf '%s\n' "订阅下载：${successful_downloads}/${#subscriptions[@]} 个来源下载成功"
+[ "$successful_downloads" -gt 0 ] || {
+  printf '%s\n' '没有成功下载的订阅，保留现有 Gist，不启动转换器' >&2
+  exit 1
+}
+if [ "$failed_downloads" -gt 0 ]; then
+  printf '%s\n' "将跳过 ${failed_downloads} 个下载失败订阅并转换其余来源"
+fi
 
 config="$workspace/subconverter.ini"
 sed "s#https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/#https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/#g; s#https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/refs/heads/master/#https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/#g" config/subconverter.ini > "$config"
@@ -76,13 +125,14 @@ done
 }
 
 successful_subscriptions=0
-failed_subscriptions=0
+failed_conversions=0
 valid_subscriptions=()
-for index in "${!subscriptions[@]}"; do
-  output="$workspace/subscription-$index.yaml"
+for index in "${!downloaded_subscriptions[@]}"; do
+  source_index="${downloaded_source_indexes[$index]}"
+  output="$workspace/conversion-$source_index.yaml"
   status="$(request_converter "$output" \
     --data-urlencode 'target=clash' \
-    --data-urlencode "url=${subscriptions[$index]}")"
+    --data-urlencode "url=${downloaded_subscriptions[$index]}")"
   if [ "$status" != 200 ] || ! python3 - "$output" <<'PY'
 import sys
 from pathlib import Path
@@ -94,21 +144,21 @@ except (OSError, yaml.YAMLError):
 raise SystemExit(0 if isinstance(data, dict) and data.get("proxies") else 1)
 PY
   then
-    failed_subscriptions=$((failed_subscriptions + 1))
-    printf '%s\n' "订阅 $((index + 1)) 转换失败（HTTP ${status:-000}）" >&2
+    failed_conversions=$((failed_conversions + 1))
+    printf '%s\n' "订阅 $((source_index + 1)) 转换失败（HTTP ${status:-000}）" >&2
     show_converter_diagnostics "$output"
   else
     successful_subscriptions=$((successful_subscriptions + 1))
-    valid_subscriptions+=("${subscriptions[$index]}")
+    valid_subscriptions+=("${downloaded_subscriptions[$index]}")
   fi
 done
-printf '%s\n' "订阅预检：${successful_subscriptions}/${#subscriptions[@]} 个来源可转换"
+printf '%s\n' "订阅预检：${successful_subscriptions}/${#downloaded_subscriptions[@]} 个已下载来源可转换"
 [ "$successful_subscriptions" -gt 0 ] || {
   printf '%s\n' '没有可转换的订阅，保留现有 Gist，不执行发布' >&2
   exit 1
 }
-if [ "$failed_subscriptions" -gt 0 ]; then
-  printf '%s\n' "将跳过 ${failed_subscriptions} 个失败订阅并发布其余来源"
+if [ "$failed_conversions" -gt 0 ]; then
+  printf '%s\n' "将跳过 ${failed_conversions} 个转换失败订阅并发布其余来源"
 fi
 
 output="$workspace/clash-meta.yaml"
@@ -172,4 +222,5 @@ status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code
   -H 'Content-Type: application/json' --data-binary "@$workspace/request.json" \
   "https://api.github.com/gists/$GIST_ID")"
 [ "$status" = 200 ] || { printf '%s\n' "更新 Gist 失败（HTTP $status）" >&2; exit 1; }
-printf '%s\n' "已更新 Gist 文件：${GIST_FILENAME}（${successful_subscriptions}/${#subscriptions[@]} 个订阅来源可用，已跳过 ${failed_subscriptions} 个）"
+skipped_subscriptions=$((failed_downloads + failed_conversions))
+printf '%s\n' "已更新 Gist 文件：${GIST_FILENAME}（${successful_subscriptions}/${#subscriptions[@]} 个订阅来源已下载并转换，已跳过 ${skipped_subscriptions} 个）"
