@@ -61,8 +61,8 @@ subconverter_endpoint="${SUBCONVERTER_URL%/}/sub"
 config_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/config/subconverter.ini"
 
 status="$(curl --silent --show-error --location --connect-timeout 10 --max-time 30 --output "$workspace/version.txt" --write-out '%{http_code}' "${SUBCONVERTER_URL%/}/version" || true)"
-[ "$status" = 200 ] || {
-  printf '%s\n' "公共转换器不可用（HTTP ${status:-000}）" >&2
+[ "$status" = 200 ] && grep -qi 'subconverter' "$workspace/version.txt" || {
+  printf '%s\n' "公共转换器不是兼容的 subconverter API（HTTP ${status:-000}）" >&2
   show_converter_diagnostics "$workspace/version.txt"
   exit 1
 }

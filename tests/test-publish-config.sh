@@ -15,11 +15,14 @@ curl() {
     if [ "$previous" = '--write-out' ]; then write_out="$argument"; fi
     if [ "$previous" = '--data-urlencode' ] && [[ "$argument" == url=* ]]; then url="${argument#url=}"; fi
     if [ "$previous" = '--data-urlencode' ] && [[ "$argument" == config=* ]]; then config="${argument#config=}"; fi
-    if [[ "$argument" == https://converter.example/* ]]; then endpoint="$argument"; fi
+    if [[ "$argument" == https://*.example/* ]]; then endpoint="$argument"; fi
     previous="$argument"
   done
 
-  if [[ "$endpoint" == *'/version' ]]; then
+  if [[ "$endpoint" == 'https://frontend.example/version' ]]; then
+    printf '%s\n' 'frontend-version' >>"$call_log"
+    printf '<!doctype html><title>在线订阅转换工具</title>\n' >"$output"
+  elif [[ "$endpoint" == *'/version' ]]; then
     printf '%s\n' 'converter-version' >>"$call_log"
     printf 'subconverter test backend\n' >"$output"
   elif [[ "$endpoint" == *'/sub' ]]; then
@@ -95,5 +98,24 @@ fi
 grep -F '没有可转换的订阅，保留现有 Gist，不执行发布' "$failed_log" >/dev/null
 if grep -F 'api.github.com/gists' "$call_log" >/dev/null; then
   printf '%s\n' 'publish attempted a Gist update without a convertible subscription' >&2
+  exit 1
+fi
+
+: >"$call_log"
+frontend_log="$workspace/frontend-url.log"
+if (
+  cd "$root"
+  SUBSCRIPTION_URLS='https://valid.example/sub' \
+  SUBCONVERTER_URL=https://frontend.example \
+  GIST_ID=test GIST_TOKEN=test GITHUB_REPOSITORY=owner/repo GITHUB_SHA=test \
+  bash ./scripts/publish-config.sh
+) >"$frontend_log" 2>&1; then
+  printf '%s\n' 'publish accepted a web frontend as a subconverter API' >&2
+  exit 1
+fi
+
+grep -F '公共转换器不是兼容的 subconverter API（HTTP 200）' "$frontend_log" >/dev/null
+if grep -F 'converter-sub:' "$call_log" >/dev/null; then
+  printf '%s\n' 'publish sent a subscription to a non-subconverter frontend' >&2
   exit 1
 fi
