@@ -59,6 +59,7 @@ if ! (
   cd "$root"
   SUBSCRIPTION_URLS=$'https://valid.example/sub\nhttps://invalid.example/private-token' \
   SUBCONVERTER_URL=https://converter.example \
+  SUBCONVERTER_RETRY_DELAY=0 \
   GIST_ID=test GIST_TOKEN=test GITHUB_REPOSITORY=owner/repo GITHUB_SHA=test \
   bash ./scripts/publish-config.sh
 ) >"$log" 2>&1; then
@@ -79,6 +80,10 @@ if grep -E 'https://(valid|invalid)\.example|private-token' <<<"$diagnostics" >/
   exit 1
 fi
 grep -F 'converter-version' "$call_log" >/dev/null
+[ "$(grep -c -F 'converter-sub:https://invalid.example/private-token' "$call_log")" = 3 ] || {
+  printf '%s\n' 'publish did not retry a transient conversion failure three times' >&2
+  exit 1
+}
 if grep -E 'docker|/base/config/subscriptions' "$call_log" "$log" >/dev/null; then
   printf '%s\n' 'publish unexpectedly depended on a local Docker converter' >&2
   exit 1

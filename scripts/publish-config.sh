@@ -13,6 +13,11 @@ set +x
 : "${GIST_FILENAME:=clash-meta.yaml}"
 : "${GITHUB_REPOSITORY:=chinnsenn/ClashCustomRule}"
 : "${GITHUB_SHA:=master}"
+: "${SUBCONVERTER_RETRY_DELAY:=2}"
+
+case "$SUBCONVERTER_RETRY_DELAY" in
+  *[!0-9]*|'') printf '%s\n' 'SUBCONVERTER_RETRY_DELAY 必须是非负整数秒数' >&2; exit 1 ;;
+esac
 
 workspace="$(mktemp -d)"
 trap 'rm -rf "$workspace"' EXIT
@@ -44,6 +49,19 @@ request_converter() {
     "$subconverter_endpoint" || true
 }
 
+has_proxies() {
+  python3 - "$1" <<'PY'
+import sys
+from pathlib import Path
+import yaml
+try:
+    data = yaml.safe_load(Path(sys.argv[1]).read_text(encoding="utf-8"))
+except (OSError, yaml.YAMLError):
+    raise SystemExit(1)
+raise SystemExit(0 if isinstance(data, dict) and data.get("proxies") else 1)
+PY
+}
+
 printf '%s\n' "$SUBSCRIPTION_URLS" | while IFS= read -r url; do
   [ -z "$url" ] || case "$url" in \#*) ;; *) printf '::add-mask::%s\n' "$url" ;; esac
 done
@@ -72,20 +90,22 @@ failed_conversions=0
 valid_subscriptions=()
 for index in "${!subscriptions[@]}"; do
   output="$workspace/conversion-$index.yaml"
-  status="$(request_converter "$output" \
-    --data-urlencode 'target=clash' \
-    --data-urlencode "url=${subscriptions[$index]}")"
-  if [ "$status" != 200 ] || ! python3 - "$output" <<'PY'
-import sys
-from pathlib import Path
-import yaml
-try:
-    data = yaml.safe_load(Path(sys.argv[1]).read_text(encoding="utf-8"))
-except (OSError, yaml.YAMLError):
-    raise SystemExit(1)
-raise SystemExit(0 if isinstance(data, dict) and data.get("proxies") else 1)
-PY
-  then
+  converted=0
+  status=000
+  for attempt in 1 2 3; do
+    status="$(request_converter "$output" \
+      --data-urlencode 'target=clash' \
+      --data-urlencode "url=${subscriptions[$index]}")"
+    if [ "$status" = 200 ] && has_proxies "$output"; then
+      converted=1
+      break
+    fi
+    if [ "$attempt" -lt 3 ]; then
+      printf '%s\n' "订阅 $((index + 1)) 转换未通过，${SUBCONVERTER_RETRY_DELAY} 秒后进行第 $((attempt + 1))/3 次重试" >&2
+      sleep "$SUBCONVERTER_RETRY_DELAY"
+    fi
+  done
+  if [ "$converted" -ne 1 ]; then
     failed_conversions=$((failed_conversions + 1))
     printf '%s\n' "订阅 $((index + 1)) 转换失败（HTTP ${status:-000}）" >&2
     show_converter_diagnostics "$output"
