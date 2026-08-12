@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # [INPUT]: GitHub Actions Secrets、config/subconverter.ini、Docker 与 GitHub Gist API
 # [OUTPUT]: 对外更新指定私有 Gist 的完整 Clash Meta 配置
-# [POS]: scripts 的发布编排器，转换失败时保护最后可用的 Gist
+# [POS]: scripts 的容错发布编排器，跳过失效订阅并保护最后可用的 Gist
 # [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 set -euo pipefail
 set +x
@@ -18,6 +18,35 @@ workspace="$(mktemp -d)"
 container="clash-subconverter-${RANDOM}-${RANDOM}"
 trap 'docker rm -f "$container" >/dev/null 2>&1 || true; rm -rf "$workspace"' EXIT
 
+redact() {
+  sed -E \
+    -e 's#https?://[^[:space:]"'"'"'<>]+#<已隐藏的订阅地址>#g' \
+    -e 's#(token|key|secret|password|authorization)=?[^[:space:]&]+#\1=<已隐藏>#Ig'
+}
+
+show_converter_diagnostics() {
+  local response="$1"
+  if [ -s "$response" ]; then
+    printf '%s' '转换器响应（已脱敏）：' >&2
+    head -c 2048 "$response" | tr '\n' ' ' | redact >&2
+    printf '\n' >&2
+  fi
+  printf '%s\n' '转换器最近日志（已脱敏）：' >&2
+  docker logs "$container" 2>&1 | tail -n 30 | redact >&2 || true
+}
+
+request_converter() {
+  local output="$1"
+  shift
+  curl --silent --show-error --get \
+    --connect-timeout 10 \
+    --max-time 180 \
+    --output "$output" \
+    --write-out '%{http_code}' \
+    "$@" \
+    http://127.0.0.1:25500/sub || true
+}
+
 printf '%s\n' "$SUBSCRIPTION_URLS" | while IFS= read -r url; do
   [ -z "$url" ] || case "$url" in \#*) ;; *) printf '::add-mask::%s\n' "$url" ;; esac
 done
@@ -29,20 +58,70 @@ mapfile -t subscriptions < <(printf '%s\n' "$SUBSCRIPTION_URLS" | grep -Ev '^\s*
 config="$workspace/subconverter.ini"
 sed "s#https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/#https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/#g; s#https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/refs/heads/master/#https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/#g" config/subconverter.ini > "$config"
 
-joined_urls="$(printf '%s\n' "${subscriptions[@]}" | python3 -c 'import sys; print("|".join(line.strip() for line in sys.stdin if line.strip()))')"
 docker run -d --rm --name "$container" -p 127.0.0.1:25500:25500 -v "$workspace:/base/config:ro" "$SUBCONVERTER_IMAGE" >/dev/null
 
+ready=0
 for _ in $(seq 1 30); do
-  curl --fail --silent --show-error http://127.0.0.1:25500/version >/dev/null && break
+  status="$(curl --silent --show-error --connect-timeout 2 --max-time 5 --output "$workspace/version.txt" --write-out '%{http_code}' http://127.0.0.1:25500/version 2>/dev/null || true)"
+  if [ "$status" = 200 ]; then
+    ready=1
+    break
+  fi
   sleep 1
 done
-curl --fail --silent --show-error http://127.0.0.1:25500/version >/dev/null
+[ "$ready" = 1 ] || {
+  printf '%s\n' "转换器未能就绪（HTTP ${status:-000}）" >&2
+  show_converter_diagnostics "$workspace/version.txt"
+  exit 1
+}
 
-curl --fail --silent --show-error --get \
+successful_subscriptions=0
+failed_subscriptions=0
+valid_subscriptions=()
+for index in "${!subscriptions[@]}"; do
+  output="$workspace/subscription-$index.yaml"
+  status="$(request_converter "$output" \
+    --data-urlencode 'target=clash' \
+    --data-urlencode "url=${subscriptions[$index]}")"
+  if [ "$status" != 200 ] || ! python3 - "$output" <<'PY'
+import sys
+from pathlib import Path
+import yaml
+try:
+    data = yaml.safe_load(Path(sys.argv[1]).read_text(encoding="utf-8"))
+except (OSError, yaml.YAMLError):
+    raise SystemExit(1)
+raise SystemExit(0 if isinstance(data, dict) and data.get("proxies") else 1)
+PY
+  then
+    failed_subscriptions=$((failed_subscriptions + 1))
+    printf '%s\n' "订阅 $((index + 1)) 转换失败（HTTP ${status:-000}）" >&2
+    show_converter_diagnostics "$output"
+  else
+    successful_subscriptions=$((successful_subscriptions + 1))
+    valid_subscriptions+=("${subscriptions[$index]}")
+  fi
+done
+printf '%s\n' "订阅预检：${successful_subscriptions}/${#subscriptions[@]} 个来源可转换"
+[ "$successful_subscriptions" -gt 0 ] || {
+  printf '%s\n' '没有可转换的订阅，保留现有 Gist，不执行发布' >&2
+  exit 1
+}
+if [ "$failed_subscriptions" -gt 0 ]; then
+  printf '%s\n' "将跳过 ${failed_subscriptions} 个失败订阅并发布其余来源"
+fi
+
+output="$workspace/clash-meta.yaml"
+joined_urls="$(printf '%s\n' "${valid_subscriptions[@]}" | python3 -c 'import sys; print("|".join(line.strip() for line in sys.stdin if line.strip()))')"
+status="$(request_converter "$output" \
   --data-urlencode 'target=clash' \
   --data-urlencode "url=$joined_urls" \
-  --data-urlencode 'config=config/subconverter.ini' \
-  http://127.0.0.1:25500/sub > "$workspace/clash-meta.yaml"
+  --data-urlencode 'config=config/subconverter.ini')"
+[ "$status" = 200 ] || {
+  printf '%s\n' "聚合转换失败（HTTP ${status:-000}）" >&2
+  show_converter_diagnostics "$output"
+  exit 1
+}
 
 python3 - "$workspace/clash-meta.yaml" <<'PY'
 import sys
@@ -74,7 +153,8 @@ result=0
 python3 - "$current" "$workspace/clash-meta.yaml" "$GIST_FILENAME" "$workspace/request.json" <<'PY' || result=$?
 import json, sys
 from pathlib import Path
-current, config, name, request = map(Path, sys.argv[1:])
+current, config, request = map(Path, (sys.argv[1], sys.argv[2], sys.argv[4]))
+name = sys.argv[3]
 old = json.loads(current.read_text()).get("files", {}).get(name, {}).get("content", "")
 new = config.read_text(encoding="utf-8")
 if old == new:
@@ -92,4 +172,4 @@ status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code
   -H 'Content-Type: application/json' --data-binary "@$workspace/request.json" \
   "https://api.github.com/gists/$GIST_ID")"
 [ "$status" = 200 ] || { printf '%s\n' "更新 Gist 失败（HTTP $status）" >&2; exit 1; }
-printf '%s\n' "已更新 Gist 文件：$GIST_FILENAME（${#subscriptions[@]} 个订阅来源）"
+printf '%s\n' "已更新 Gist 文件：${GIST_FILENAME}（${successful_subscriptions}/${#subscriptions[@]} 个订阅来源可用，已跳过 ${failed_subscriptions} 个）"

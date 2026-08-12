@@ -36,6 +36,7 @@ jobs:
         run: |
           python3 tests/test_native_template.py
           bash tests/test-validation.sh
+          bash tests/test-publish-config.sh
 
       - name: Publish validated configuration
         shell: bash
