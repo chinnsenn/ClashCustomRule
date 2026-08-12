@@ -161,7 +161,7 @@ rule-providers:
     interval: 86400
   ibkr:
     type: http
-    behavior: domain
+    behavior: classical
     format: yaml
     path: ./rule-providers/ibkr.yaml
     url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/ibkr.yaml
@@ -502,6 +502,125 @@ rule-providers:
     path: ./rule-providers/Microsoft_domain.yaml
     url: https://raw.githubusercontent.com/chinnsenn/ClashCustomRule/master/providers/Microsoft_domain.yaml
     interval: 86400
+  TikTok_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/TikTok_classical.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok_No_Resolve.yaml
+    interval: 86400
+  Gemini_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/Gemini_classical.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini_No_Resolve.yaml
+    interval: 86400
+  Binance_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/Binance_classical.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Binance/Binance_No_Resolve.yaml
+    interval: 86400
+  Line_classical:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/Line_classical.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Line/Line_No_Resolve.yaml
+    interval: 86400
+  Apple_domain:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./rule-providers/Apple_domain.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Domain.yaml
+    interval: 86400
+  Apple_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/Apple_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_No_Resolve.yaml
+    interval: 86400
+  AppleDaily_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleDaily_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDaily/AppleDaily_No_Resolve.yaml
+    interval: 86400
+  AppleDev_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleDev_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleDev/AppleDev_No_Resolve.yaml
+    interval: 86400
+  AppleFirmware_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleFirmware_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleFirmware/AppleFirmware_No_Resolve.yaml
+    interval: 86400
+  AppleHardware_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleHardware_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleHardware/AppleHardware_No_Resolve.yaml
+    interval: 86400
+  AppleID_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleID_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleID/AppleID_No_Resolve.yaml
+    interval: 86400
+  AppleMail_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleMail_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMail/AppleMail_No_Resolve.yaml
+    interval: 86400
+  AppleMedia_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleMedia_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMedia/AppleMedia_No_Resolve.yaml
+    interval: 86400
+  AppleMusic_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleMusic_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleMusic/AppleMusic_No_Resolve.yaml
+    interval: 86400
+  AppleNews_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleNews_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleNews/AppleNews_No_Resolve.yaml
+    interval: 86400
+  AppleProxy_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleProxy_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleProxy/AppleProxy_No_Resolve.yaml
+    interval: 86400
+  AppleTV_no_resolve:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./rule-providers/AppleTV_no_resolve.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV_No_Resolve.yaml
+    interval: 86400
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -517,17 +636,18 @@ proxy-groups:
     proxies:
       - DIRECT
   - name: ♻️ 自动选择
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🔯 故障转移
-    type: select
+    type: fallback
     use:
       - subscription
-    proxies:
-      - DIRECT
+    url: https://www.gstatic.com/generate_204
+    interval: 300
   - name: 🐟 漏网之鱼
     type: select
     use:
@@ -690,72 +810,90 @@ proxy-groups:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)港|hong.?kong|hk'
   - name: 🇯🇵 日本节点
     type: select
     use:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)日本|东京|大阪|jp|japan'
   - name: 🇺🇲 美国节点
     type: select
     use:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)美国|united states|usa|\bUS\b|洛杉矶|西雅图|硅谷'
   - name: 🇨🇳 台湾节点
     type: select
     use:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)台|新北|彰化|tw|taiwan'
   - name: 🇸🇬 新加坡节点
     type: select
     use:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)新加坡|狮城|sg|singapore'
   - name: 🇰🇷 韩国节点
     type: select
     use:
       - subscription
     proxies:
       - DIRECT
+    filter: '(?i)kr|korea|kor|首尔|韩|韓'
   - name: 🇭🇰 香港节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)港|hong.?kong|hk'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🇯🇵 日本节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)日本|东京|大阪|jp|japan'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🇺🇲 美国节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)美国|united states|usa|\bUS\b|洛杉矶|西雅图|硅谷'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 150
   - name: 🇨🇳 台湾节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)台|新北|彰化|tw|taiwan'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🇸🇬 新加坡节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)新加坡|狮城|sg|singapore'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🇰🇷 韩国节点-自动
-    type: select
+    type: url-test
     use:
       - subscription
-    proxies:
-      - DIRECT
+    filter: '(?i)kr|korea|kor|首尔|韩|韓'
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
   - name: 🌍 国外媒体
     type: select
     use:
@@ -1023,7 +1161,9 @@ rules:
   - RULE-SET,Steam_domain,🎮 游戏平台
   - RULE-SET,Nintendo_domain,🎮 Nintendo
   - RULE-SET,Nintendo_ipcidr,🎮 Nintendo,no-resolve
+  - RULE-SET,TikTok_classical,🎵 TikTok
   - RULE-SET,youtube_domain,📹 YouTube
+  - RULE-SET,Gemini_classical,🌟 Gemini
   - RULE-SET,google_domain,🔍 Google
   - RULE-SET,google_ipcidr,🔍 Google,no-resolve
   - RULE-SET,appletvplus_domain,📽️ AppleTV+
@@ -1038,11 +1178,13 @@ rules:
   - RULE-SET,deepseek,🐋 DeepSeek
   - RULE-SET,ibkr,📈 IBKR
   - RULE-SET,wallet_domain,👛 Wallet
+  - RULE-SET,Binance_classical,₿ Binance
   - RULE-SET,anthropic_domain,🤖 Anthropic
   - RULE-SET,deepl_domain,🤖 DeepL
   - RULE-SET,github_domain,🐙 Github
   - RULE-SET,cloudflare_domain,☁️ CloudFlare
   - RULE-SET,twitter,🐦 Twitter
+  - RULE-SET,Line_classical,🎈 Line
   - RULE-SET,spotify_domain,🎼 Spotify
   - RULE-SET,spotify_classical,🎼 Spotify
   - RULE-SET,dmmjp_domain,🍑 DMMCOJP
@@ -1085,5 +1227,18 @@ rules:
   - RULE-SET,OneDrive_domain,Ⓜ️ 微软云盘
   - RULE-SET,OneDrive_classical,Ⓜ️ 微软云盘
   - RULE-SET,Microsoft_domain,Ⓜ️ 微软服务
+  - RULE-SET,Apple_domain,🍎 苹果服务
+  - RULE-SET,Apple_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleDaily_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleDev_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleFirmware_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleHardware_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleID_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleMail_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleMedia_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleMusic_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleNews_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleProxy_no_resolve,🍎 苹果服务
+  - RULE-SET,AppleTV_no_resolve,🍎 苹果服务
   - GEOIP,CN,🎯 全球直连
   - MATCH,🐟 漏网之鱼

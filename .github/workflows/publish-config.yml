@@ -25,11 +25,17 @@ jobs:
 
       - name: Install YAML validator
         shell: bash
-        run: python3 -m pip install --disable-pip-version-check --quiet PyYAML==6.0.3
+        run: python3 -m pip install --disable-pip-version-check --quiet -r requirements-dev.txt
 
       - name: Validate repository configuration
         shell: bash
         run: ./scripts/validate-config.sh
+
+      - name: Run configuration regression tests
+        shell: bash
+        run: |
+          python3 tests/test_native_template.py
+          bash tests/test-validation.sh
 
       - name: Publish validated configuration
         shell: bash

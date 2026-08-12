@@ -98,10 +98,12 @@ GitHub Actions 会每 6 小时拉取全部订阅、过滤和重命名节点、�
 修改 `providers/`、策略组或原生模板后，在仓库根目录运行：
 
 ```bash
+python3 -m pip install -r requirements-dev.txt
 ./scripts/validate-config.sh
+python3 tests/test_native_template.py
 ```
 
-它会检查 provider YAML、subconverter 规则引用、策略组引用和原生模板结构。
+它会检查 provider YAML、rule-provider 行为、subconverter 规则与策略组引用、兼容副本同构性，以及原生模板与自动发布方案的服务覆盖一致性。
 
 ## 外部规则来源
 
@@ -147,7 +149,9 @@ providers/                   个人规则 payload 数据源
 config/subconverter.ini      转换规则、策略组、过滤与重命名
 config/clash-meta.yaml       可直接导入的原生 Clash Meta 模板
 scripts/publish-config.sh    聚合订阅、转换、校验并发布到 Gist
-scripts/validate-config.sh   离线配置一致性校验
+scripts/validate-config.*    离线配置一致性校验
+requirements-dev.txt         本地校验所需的 Python 依赖
+tests/                       原生模板与校验命令的回归测试
 .github/workflows/           定时与手动发布工作流
 ```
 
