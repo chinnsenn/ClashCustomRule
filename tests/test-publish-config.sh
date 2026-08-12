@@ -37,6 +37,7 @@ curl() {
       else
         printf '#%.0s' {1..600} >"$output"
         printf '\nproxies:\n  - name: test\n    type: ss\nproxy-groups:\n  - name: test\nrules:\n  - MATCH,test\n' >>"$output"
+        [ -n "$config" ] && printf '\345' >>"$output"
       fi
     fi
   elif [[ "$*" == *'api.github.com/gists/'* ]]; then
@@ -69,6 +70,7 @@ fi
 grep -F '订阅 2 转换失败（HTTP 400）' "$log" >/dev/null
 grep -F '订阅预检：1/2 个来源可转换' "$log" >/dev/null
 grep -F '将跳过 1 个转换失败订阅并发布其余来源' "$log" >/dev/null
+grep -F '转换器响应末尾含 1 个不完整 UTF-8 字节，已剔除后继续校验' "$log" >/dev/null
 grep -F '已更新 Gist 文件：clash-meta.yaml（1/2 个订阅来源可用，已跳过 1 个）' "$log" >/dev/null
 diagnostics="$(sed -n '/订阅 2 转换失败/,$p' "$log")"
 if grep -E 'https://(valid|invalid)\.example|private-token' <<<"$diagnostics" >/dev/null; then

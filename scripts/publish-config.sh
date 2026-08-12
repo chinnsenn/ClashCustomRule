@@ -122,10 +122,23 @@ try:
     import yaml
 except ImportError as error:
     raise SystemExit(f"缺少 PyYAML: {error}")
-content = Path(sys.argv[1]).read_text(encoding="utf-8")
+output_path = Path(sys.argv[1])
+raw_content = output_path.read_bytes()
+try:
+    content = raw_content.decode("utf-8")
+except UnicodeDecodeError as error:
+    if error.end == len(raw_content) and error.reason == "unexpected end of data":
+        content = raw_content[:error.start].decode("utf-8")
+        print(f"转换器响应末尾含 {len(raw_content) - error.start} 个不完整 UTF-8 字节，已剔除后继续校验")
+    else:
+        raise SystemExit(f"转换器输出不是有效 UTF-8：{error}")
+    output_path.write_text(content, encoding="utf-8")
 if len(content) < 512 or content.lstrip().lower().startswith(("<html", "<!doctype")):
     raise SystemExit("转换器返回的配置无效")
-data = yaml.safe_load(content)
+try:
+    data = yaml.safe_load(content)
+except yaml.YAMLError as error:
+    raise SystemExit(f"转换器输出不是有效 YAML：{error}")
 if not isinstance(data, dict):
     raise SystemExit("转换器输出不是 YAML 映射")
 for key in ("proxies", "proxy-groups", "rules"):
