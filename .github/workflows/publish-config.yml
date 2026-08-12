@@ -44,6 +44,6 @@ jobs:
           SUBSCRIPTION_URLS: ${{ secrets.SUBSCRIPTION_URLS }}
           GIST_ID: ${{ secrets.GIST_ID }}
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          SUBCONVERTER_URL: ${{ secrets.SUBCONVERTER_URL }}
           GIST_FILENAME: ${{ vars.GIST_FILENAME || 'clash-meta.yaml' }}
-          SUBCONVERTER_IMAGE: ghcr.io/metacubex/subconverter@sha256:cbc85945f24a415e7a3512b0b1fd54019fb98af43c91a36b35ea32b61a63b373
         run: ./scripts/publish-config.sh

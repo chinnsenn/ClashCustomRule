@@ -18,12 +18,12 @@
 
 ## 自动发布（推荐）
 
-GitHub Actions 会每 6 小时拉取全部订阅、过滤和重命名节点、应用规则、校验结果，再把有变化的配置写入一个私有 Gist。你只需把这个 Gist 的 Raw 文件地址添加到客户端一次。
+GitHub Actions 会每 6 小时通过你指定的公共 subconverter 服务拉取全部订阅、过滤和重命名节点、应用规则、校验结果，再把有变化的配置写入一个私有 Gist。你只需把这个 Gist 的 Raw 文件地址添加到客户端一次。
 
 ```text
 订阅链接
   → GitHub Actions
-  → subconverter
+  → 公共 subconverter
   → 分流规则与策略组
   → YAML 校验
   → 私有 Gist
@@ -35,11 +35,12 @@ GitHub Actions 会每 6 小时拉取全部订阅、过滤和重命名节点、�
 1. [Fork 本仓库](https://github.com/chinnsenn/ClashCustomRule/fork)。如果 Actions 尚未启用，进入**你自己的 Fork 仓库**的 **Actions** 页面，并按提示启用工作流。
 2. [创建一个私有 Gist](https://gist.github.com/)，新建文件并命名为 `clash-meta.yaml`。该文件会保存完整节点配置，请不要在公共位置分享。
 3. 创建一个可编辑此 Gist 的 GitHub 访问令牌。使用经典个人访问令牌时，只需授予 `gist` 权限；可在 [个人访问令牌页面](https://github.com/settings/tokens) 创建。
-4. 在你的 Fork 中打开 **Settings → Secrets and variables → Actions**，创建以下三个 Actions secrets：
+4. 在你的 Fork 中打开 **Settings → Secrets and variables → Actions**，创建以下四个 Actions secrets：
 
    | 名称 | 填写内容 |
    | --- | --- |
    | `SUBSCRIPTION_URLS` | 每行一个订阅链接；空行和以 `#` 开头的行会忽略 |
+   | `SUBCONVERTER_URL` | 你信任的公共 subconverter **基础地址**，例如 `https://converter.example`；不要填写末尾的 `/sub` |
    | `GIST_ID` | 第 2 步创建的 Gist ID |
    | `GIST_TOKEN` | 第 3 步创建的访问令牌 |
 
@@ -50,8 +51,10 @@ GitHub Actions 会每 6 小时拉取全部订阅、过滤和重命名节点、�
 ### 更新与失败处理
 
 - 工作流按 `17 */6 * * *` 触发，也可以随时手动运行；新任务会取消尚未完成的旧任务。
-- 每次都会先逐个下载订阅到临时文件；至少一个下载成功后才启动转换器，并只将已下载文件交给它转换。随后会跳过不可转换的来源，并检查最终 YAML 中的 `proxies`、`proxy-groups` 和 `rules`。日志只显示来源序号、计数和脱敏诊断。
-- 只要至少一个订阅下载并转换成功，工作流就会用可用来源发布；内容没有变化时不会写入 Gist。所有订阅下载失败、聚合转换、校验或发布失败时，Gist 会保留上一份可用配置。
+- 每次都会逐个请求公共转换器预检订阅，跳过不可转换的来源，再将成功来源交给同一服务聚合。最终 YAML 必须包含 `proxies`、`proxy-groups` 和 `rules`；日志只显示来源序号、计数和脱敏诊断。
+- 只要至少一个订阅转换成功，工作流就会用可用来源发布；内容没有变化时不会写入 Gist。全部来源、聚合转换、校验或发布失败时，Gist 会保留上一份可用配置。
+
+公共转换服务会收到订阅链接及其查询参数。请只使用你信任、明确承诺不记录请求且支持外部 `config` URL 的实例；不要将 Gist 令牌传给转换服务。
 
 ## 使用原生模板
 
@@ -148,7 +151,7 @@ subconverter 默认服务端口为 `25500`。建议将服务放在反向代理�
 providers/                   个人规则 payload 数据源
 config/subconverter.ini      转换规则、策略组、过滤与重命名
 config/clash-meta.yaml       可直接导入的原生 Clash Meta 模板
-scripts/publish-config.sh    聚合订阅、转换、校验并发布到 Gist
+scripts/publish-config.sh    经公共转换服务聚合订阅、校验并发布到 Gist
 scripts/validate-config.*    离线配置一致性校验
 requirements-dev.txt         本地校验所需的 Python 依赖
 tests/                       原生模板与校验命令的回归测试
