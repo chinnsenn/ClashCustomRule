@@ -5,3 +5,6 @@ payload:
   - '+.telegram.me'
   - '+.telegram.org'
   - '+.telesco.pe'
+  - '+.cdn-telegram.org'
+  - '+.tx.me'
+  - '+.fragment.com'

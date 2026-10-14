@@ -2,4 +2,7 @@ payload:
   - '+.stripe.com'
   - '+.stripecdn.com'
   - '+.stripe.network'
+  - '+.stripe.services'
   - '+.wise.com'
+  - '+.paypal.com'
+  - '+.paypalobjects.com'

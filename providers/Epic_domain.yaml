@@ -1,6 +1,8 @@
 payload:
   - '+.epicgames.com'
   - '+.epicgames.dev'
+  - '+.epicgames.org'
   - '+.helpshift.com'
   - '+.paragon.com'
   - '+.unrealengine.com'
+  - '+.eac-cdn.com'

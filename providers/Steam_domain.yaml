@@ -10,6 +10,7 @@ payload:
   - '+.playartifact.com'
   - '+.steam-chat.com'
   - '+.steamcommunity.com'
+  - '+.steamcontent.com'
   - '+.steamgames.com'
   - '+.steampowered.com'
   - '+.steamserver.net'
@@ -17,4 +18,3 @@ payload:
   - '+.steamstatic.com'
   - '+.underlords.com'
   - '+.valvesoftware.com'
-  - '+.steamcommunity.com'
