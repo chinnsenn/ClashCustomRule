@@ -78,6 +78,8 @@ const EN = ['HK','MO','TW','JP','KR','SG','US','GB','FR','DE','AU','AE','AF','AL
 const ZH = ['香港','澳门','台湾','日本','韩国','新加坡','美国','英国','法国','德国','澳大利亚','阿联酋','阿富汗','阿尔巴尼亚','阿尔及利亚','安哥拉','阿根廷','亚美尼亚','奥地利','阿塞拜疆','巴林','孟加拉国','白俄罗斯','比利时','伯利兹','贝宁','不丹','玻利维亚','波斯尼亚和黑塞哥维那','博茨瓦纳','巴西','英属维京群岛','文莱','保加利亚','布基纳法索','布隆迪','柬埔寨','喀麦隆','加拿大','佛得角','开曼群岛','中非共和国','乍得','智利','哥伦比亚','科摩罗','刚果(布)','刚果(金)','哥斯达黎加','克罗地亚','塞浦路斯','捷克','丹麦','吉布提','多米尼加共和国','厄瓜多尔','埃及','萨尔瓦多','赤道几内亚','厄立特里亚','爱沙尼亚','埃塞俄比亚','斐济','芬兰','加蓬','冈比亚','格鲁吉亚','加纳','希腊','格陵兰','危地马拉','几内亚','圭亚那','海地','洪都拉斯','匈牙利','冰岛','印度','印尼','伊朗','伊拉克','爱尔兰','马恩岛','以色列','意大利','科特迪瓦','牙买加','约旦','哈萨克斯坦','肯尼亚','科威特','吉尔吉斯斯坦','老挝','拉脱维亚','黎巴嫩','莱索托','利比里亚','利比亚','立陶宛','卢森堡','马其顿','马达加斯加','马拉维','马来','马尔代夫','马里','马耳他','毛利塔尼亚','毛里求斯','墨西哥','摩尔多瓦','摩纳哥','蒙古','黑山共和国','摩洛哥','莫桑比克','缅甸','纳米比亚','尼泊尔','荷兰','新西兰','尼加拉瓜','尼日尔','尼日利亚','朝鲜','挪威','阿曼','巴基斯坦','巴拿马','巴拉圭','秘鲁','菲律宾','葡萄牙','波多黎各','卡塔尔','罗马尼亚','俄罗斯','卢旺达','圣马力诺','沙特阿拉伯','塞内加尔','塞尔维亚','塞拉利昂','斯洛伐克','斯洛文尼亚','索马里','南非','西班牙','斯里兰卡','苏丹','苏里南','斯威士兰','瑞典','瑞士','叙利亚','塔吉克斯坦','坦桑尼亚','泰国','多哥','汤加','特立尼达和多巴哥','突尼斯','土耳其','土库曼斯坦','美属维尔京群岛','乌干达','乌克兰','乌拉圭','乌兹别克斯坦','委内瑞拉','越南','也门','赞比亚','津巴布韦','安道尔','留尼汪','波兰','关岛','梵蒂冈','列支敦士登','库拉索','塞舌尔','南极','直布罗陀','古巴','法罗群岛','奥兰群岛','百慕达','东帝汶','中国'];
 // prettier-ignore
 const QC = ['Hong Kong','Macao','Taiwan','Japan','Korea','Singapore','United States','United Kingdom','France','Germany','Australia','Dubai','Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Austria','Azerbaijan','Bahrain','Bangladesh','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','British Virgin Islands','Brunei','Bulgaria','Burkina-faso','Burundi','Cambodia','Cameroon','Canada','CapeVerde','CaymanIslands','Central African Republic','Chad','Chile','Colombia','Comoros','Congo-Brazzaville','Congo-Kinshasa','CostaRica','Croatia','Cyprus','Czech Republic','Denmark','Djibouti','Dominican Republic','Ecuador','Egypt','EISalvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','Gabon','Gambia','Georgia','Ghana','Greece','Greenland','Guatemala','Guinea','Guyana','Haiti','Honduras','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Jordan','Kazakstan','Kenya','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Lithuania','Luxembourg','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar(Burma)','Namibia','Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','NorthKorea','Norway','Oman','Pakistan','Panama','Paraguay','Peru','Philippines','Portugal','PuertoRico','Qatar','Romania','Russia','Rwanda','SanMarino','SaudiArabia','Senegal','Serbia','SierraLeone','Slovakia','Slovenia','Somalia','SouthAfrica','Spain','SriLanka','Sudan','Suriname','Swaziland','Sweden','Switzerland','Syria','Tajikstan','Tanzania','Thailand','Togo','Tonga','TrinidadandTobago','Tunisia','Turkey','Turkmenistan','U.S.Virgin Islands','Uganda','Ukraine','Uruguay','Uzbekistan','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe','Andorra','Reunion','Poland','Guam','Vatican','Liechtensteins','Curacao','Seychelles','Antarctica','Gibraltar','Cuba','Faroe Islands','Ahvenanmaa','Bermuda','Timor-Leste','China'];
+// prettier-ignore
+const ZH_ALIAS = { '澳門':'澳门', '臺灣':'台湾', '韓國':'韩国', '美國':'美国', '英國':'英国', '法國':'法国', '德國':'德国', '澳大利亞':'澳大利亚', '阿聯酋':'阿联酋', '阿爾巴尼亞':'阿尔巴尼亚', '阿爾及利亞':'阿尔及利亚', '亞美尼亞':'亚美尼亚', '奧地利':'奥地利', '孟加拉國':'孟加拉国', '白俄羅斯':'白俄罗斯', '比利時':'比利时', '伯利茲':'伯利兹', '貝寧':'贝宁', '玻利維亞':'玻利维亚', '波斯尼亞和黑塞哥維那':'波斯尼亚和黑塞哥维那', '博茨瓦納':'博茨瓦纳', '英屬維京羣島':'英属维京群岛', '文萊':'文莱', '保加利亞':'保加利亚', '布基納法索':'布基纳法索', '喀麥隆':'喀麦隆', '開曼羣島':'开曼群岛', '中非共和國':'中非共和国', '哥倫比亞':'哥伦比亚', '科摩羅':'科摩罗', '剛果(布)':'刚果(布)', '剛果(金)':'刚果(金)', '哥斯達黎加':'哥斯达黎加', '克羅地亞':'克罗地亚', '丹麥':'丹麦', '多米尼加共和國':'多米尼加共和国', '厄瓜多爾':'厄瓜多尔', '薩爾瓦多':'萨尔瓦多', '赤道幾內亞':'赤道几内亚', '厄立特里亞':'厄立特里亚', '愛沙尼亞':'爱沙尼亚', '埃塞俄比亞':'埃塞俄比亚', '斐濟':'斐济', '芬蘭':'芬兰', '岡比亞':'冈比亚', '格魯吉亞':'格鲁吉亚', '加納':'加纳', '希臘':'希腊', '格陵蘭':'格陵兰', '危地馬拉':'危地马拉', '幾內亞':'几内亚', '圭亞那':'圭亚那', '冰島':'冰岛', '愛爾蘭':'爱尔兰', '馬恩島':'马恩岛', '牙買加':'牙买加', '約旦':'约旦', '哈薩克斯坦':'哈萨克斯坦', '肯尼亞':'肯尼亚', '吉爾吉斯斯坦':'吉尔吉斯斯坦', '老撾':'老挝', '拉脫維亞':'拉脱维亚', '萊索托':'莱索托', '利比里亞':'利比里亚', '利比亞':'利比亚', '盧森堡':'卢森堡', '馬其頓':'马其顿', '馬達加斯加':'马达加斯加', '馬拉維':'马拉维', '馬來':'马来', '馬爾代夫':'马尔代夫', '馬裏':'马里', '馬耳他':'马耳他', '毛利塔尼亞':'毛利塔尼亚', '摩爾多瓦':'摩尔多瓦', '摩納哥':'摩纳哥', '黑山共和國':'黑山共和国', '緬甸':'缅甸', '納米比亞':'纳米比亚', '尼泊爾':'尼泊尔', '荷蘭':'荷兰', '新西蘭':'新西兰', '尼日爾':'尼日尔', '尼日利亞':'尼日利亚', '朝鮮':'朝鲜', '巴拿馬':'巴拿马', '祕魯':'秘鲁', '菲律賓':'菲律宾', '卡塔爾':'卡塔尔', '羅馬尼亞':'罗马尼亚', '俄羅斯':'俄罗斯', '盧旺達':'卢旺达', '聖馬力諾':'圣马力诺', '塞內加爾':'塞内加尔', '塞爾維亞':'塞尔维亚', '斯洛文尼亞':'斯洛文尼亚', '索馬里':'索马里', '斯里蘭卡':'斯里兰卡', '蘇丹':'苏丹', '蘇里南':'苏里南', '斯威士蘭':'斯威士兰', '敘利亞':'叙利亚', '坦桑尼亞':'坦桑尼亚', '泰國':'泰国', '湯加':'汤加', '特立尼達和多巴哥':'特立尼达和多巴哥', '土庫曼斯坦':'土库曼斯坦', '美屬維爾京羣島':'美属维尔京群岛', '烏干達':'乌干达', '烏克蘭':'乌克兰', '烏拉圭':'乌拉圭', '烏茲別克斯坦':'乌兹别克斯坦', '委內瑞拉':'委内瑞拉', '也門':'也门', '贊比亞':'赞比亚', '津巴布韋':'津巴布韦', '安道爾':'安道尔', '波蘭':'波兰', '關島':'关岛', '梵蒂岡':'梵蒂冈', '庫拉索':'库拉索', '塞舌爾':'塞舌尔', '南極':'南极', '直布羅陀':'直布罗陀', '法羅羣島':'法罗群岛', '奧蘭羣島':'奥兰群岛', '百慕達':'百慕达', '東帝汶':'东帝汶', '中國':'中国' };
 const specialRegex = [
   /(\d\.)?\d+×/,
   /IPLC|IEPL|Kern|Edge|Pro|Std|Exp|Biz|Fam|Game|Buy|Zx|LB|Game/,
@@ -145,7 +147,7 @@ function ObjKA(i) {
 }
 
 function operator(pro) {
-  const Allmap = {};
+  let Allmap = {};
   const outList = getList(outputName);
   let inputList,
     retainKey = "";
@@ -160,6 +162,15 @@ function operator(pro) {
       Allmap[value] = outList[valueIndex];
     });
   });
+
+  // 繁体地区词别名前置：繁体命名的机场（如「中國家寬-RfchostJP轉發」）若不识别繁体地区词，
+  // 会回退到 EN 缩写匹配，被主机名里的 JP/KR 误判地区。别名值与对应简体词一致，前置不影响简体名。
+  {
+    const Ordered = {};
+    Object.keys(ZH_ALIAS).forEach((k) => { Ordered[k] = Allmap[ZH_ALIAS[k]]; });
+    Object.keys(Allmap).forEach((k) => { if (!(k in Ordered)) Ordered[k] = Allmap[k]; });
+    Allmap = Ordered;
+  }
 
   if (clear || nx || blnx || key) {
     pro = pro.filter((res) => {
